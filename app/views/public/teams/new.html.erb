@@ -1,2 +1,17 @@
-<h1>Public::Teams#new</h1>
-<p>Find me in app/views/public/teams/new.html.erb</p>
+<h1>楽団情報登録</h1>
+  <%= form_with model: @team do |f| %>
+  <div>
+    <%= f.label :"楽団名" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :"活動場所" %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :"紹介文" %>
+    <%= f.text_area :introduction %>
+  </div>
+  <%= f.submit "登録" %>
+  <% end %>
+

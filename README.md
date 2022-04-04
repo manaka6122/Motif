@@ -18,10 +18,10 @@
 吹奏楽団の団員を募集したい時, 吹奏楽団の詳細情報、活動内容を知りたい時, 吹奏楽団に加入したい時
 
 ## 設計書
-[実装機能リスト](https://docs.google.com/spreadsheets/d/1YAH_80EUZsWAXSVEm7rtB3Sma8wIopxUBXCJJtmm3HY/edit#gid=885378170)
-[ER図](https://app.diagrams.net/#G16opNgcvgaY9UDQQ8FgwpZeL8mwJPl8SJ)
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1nDoXTThFz974PyZmRG5ikEvBz_R3cN-x850YFPxO_o8/edit#gid=1186184812)
-[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1CsCPjXOjxOvr_0G50RrDxFicw8YNdT-IHDbScUi2r2M/edit#gid=1728893629)
+* [実装機能リスト](https://docs.google.com/spreadsheets/d/1YAH_80EUZsWAXSVEm7rtB3Sma8wIopxUBXCJJtmm3HY/edit#gid=885378170)
+* [ER図](https://app.diagrams.net/#G16opNgcvgaY9UDQQ8FgwpZeL8mwJPl8SJ)
+* [テーブル定義書](https://docs.google.com/spreadsheets/d/1nDoXTThFz974PyZmRG5ikEvBz_R3cN-x850YFPxO_o8/edit#gid=1186184812)
+* [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1CsCPjXOjxOvr_0G50RrDxFicw8YNdT-IHDbScUi2r2M/edit#gid=1728893629)
 
 ## 開発環境
 - OS：Linux(CentOS)

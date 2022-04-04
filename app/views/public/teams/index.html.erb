@@ -1,2 +1,27 @@
-<h1>Public::Teams#index</h1>
-<p>Find me in app/views/public/teams/index.html.erb</p>
+<h1>楽団情報一覧</h1>
+<%= link_to "新規登録", new_team_path %>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+    
+    <tr>
+      <td>楽団名</td>
+      <td><%= team.name %></td>
+    </tr>
+    <tr>
+      <td>活動場所</td>
+      <td><%= team.address %></td>
+    </tr>
+    <tr>
+      <td>紹介文</td>
+      <td><%= team.introduction %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

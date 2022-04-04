@@ -1,0 +1,26 @@
+<h1>楽団情報詳細</h1>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>楽団名</td>
+      <td><%= @team.name %></td>
+    </tr>
+    <tr>
+      <td>活動場所</td>
+      <td><%= @team.address %></td>
+    </tr>
+    <tr>
+      <td>紹介文</td>
+      <td><%= @team.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+<% if @team.customer == current_customer %>
+ <%= link_to "削除", team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' } %>
+<% end %>
