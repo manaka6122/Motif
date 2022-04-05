@@ -1,2 +1,10 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>会員情報</h2>
+      <%= render "info", customer: @customer %>
+      <h2 class="mt-3">楽団情報一覧</h2>
+      <%= render "public/teams/index", teams: @teams %>
+    </div>
+  </div>
+</div>

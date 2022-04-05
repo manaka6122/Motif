@@ -1,26 +1,36 @@
-<h1>楽団情報詳細</h1>
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>楽団名</td>
-      <td><%= @team.name %></td>
-    </tr>
-    <tr>
-      <td>活動場所</td>
-      <td><%= @team.address %></td>
-    </tr>
-    <tr>
-      <td>紹介文</td>
-      <td><%= @team.introduction %></td>
-    </tr>
-  </tbody>
-</table>
-<% if @team.customer == current_customer %>
- <%= link_to "削除", team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' } %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "public/customers/info", customer: @team.customer %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h1>楽団情報詳細</h1>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>楽団名</td>
+            <td><%= @team.name %></td>
+          </tr>
+          <tr>
+            <td>活動場所</td>
+            <td><%= @team.address %></td>
+          </tr>
+          <tr>
+            <td>紹介文</td>
+            <td><%= @team.introduction %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @team.customer == current_customer %>
+        <%= link_to "編集", edit_team_path(@team), class: "btn btn-sm btn-success" %>
+        <%= link_to "削除", team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>

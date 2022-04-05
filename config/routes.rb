@@ -15,9 +15,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about', as: 'about'
   scope module: :public do
-    get 'customers/show' => 'customers#show', as: 'customerpage'
-    get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
-    patch 'customers/information' => 'customers#update', as: 'update_information'
+    resources :customers, only: [:show, :edit, :update]
     resources :activities do
       resource :favorites, only: [:create, :destroy]
     end

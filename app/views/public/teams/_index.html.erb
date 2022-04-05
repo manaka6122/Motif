@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% teams.each do |team| %>
+    <tr>
+      <td>楽団名</td>
+      <td><%= link_to team.name, team_path(team), class: "underline" %></td>
+    </tr>
+    <tr>
+      <td>活動場所</td>
+      <td><%= team.address %></td>
+    </tr>
+    <tr>
+      <td>紹介文</td>
+      <td><%= team.introduction %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

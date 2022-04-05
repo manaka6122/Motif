@@ -19,6 +19,12 @@
       <li>
         <%= link_to "楽団情報一覧", teams_path %>
       </li>
+      <li>
+        <%= link_to "活動情報一覧", activities_path %>
+      </li>
+      <li>
+        <%= link_to "Mypage", customer_path(current_customer.id) %>
+      </li>
     <% elsif admin_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>

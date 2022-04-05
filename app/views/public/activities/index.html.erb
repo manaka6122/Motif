@@ -1,2 +1,12 @@
-<h1>Public::Activities#index</h1>
-<p>Find me in app/views/public/activities/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "public/customers/info", customer: current_customer %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h1>活動情報一覧</h1>
+        <%= link_to "新規登録", new_activity_path %>
+        <%= render "index", activities: @activities %>
+    </div>
+  </div>
+</div>

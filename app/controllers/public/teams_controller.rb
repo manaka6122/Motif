@@ -19,8 +19,12 @@ class Public::TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
-    @team.update
-    redirect_to team_path
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    @team.update(team_params)
+    redirect_to team_path(@team)
   end
 
   def destroy

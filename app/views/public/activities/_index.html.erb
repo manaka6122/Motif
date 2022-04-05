@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>楽団名</th>
+      <th>タイトル</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% activities.each do |activity| %>
+    <tr>
+      <td><%= image_tag activity.customer.get_profile_image(50, 50) %></td>
+      <td><%= link_to activity.team.name, team_path(activity.team_id) %></td>
+      <td><%= link_to activity.title, activity_path(activity) %></td>
+      <td><%= activity.content%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

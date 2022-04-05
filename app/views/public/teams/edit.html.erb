@@ -1,2 +1,16 @@
-<h1>Public::Teams#edit</h1>
-<p>Find me in app/views/public/teams/edit.html.erb</p>
+<h1>楽団情報編集</h1>
+  <%= form_with model: @team do |f| %>
+  <div>
+    <%= f.label :name, "楽団名" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :address, "活動場所" %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :introduction, "紹介文" %>
+    <%= f.text_area :introduction %>
+  </div>
+  <%= f.submit "保存", class: "btn btn-primary" %>
+  <% end %>

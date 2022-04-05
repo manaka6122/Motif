@@ -1,2 +1,46 @@
-<h1>Public::Activities#show</h1>
-<p>Find me in app/views/public/activities/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      
+    <div class="col-md-8 offset-md-1">
+      <h1>活動情報詳細</h1>
+      <div class="flex">
+		    <div>
+			    <div class="image_field">
+				    <%= image_tag @activity.get_image(100, 100) %>
+			    </div>
+		    </div>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>楽団名</td>
+              <td><%= link_to @activity.team.name, team_path(@activity.team_id) %></td>
+            </tr>
+            <tr>
+              <td>タイトル</td>
+              <td><%= @activity.title %></td>
+            </tr>
+            <tr>
+              <td>内容</td>
+              <td><%= @activity.content %></td>
+            </tr>
+            <tr>
+              <td>開催日</td>
+              <td><%= @activity.activity_on %></td>
+            </tr>
+          </tbody>
+        </table>
+        <% if @team.customer == current_customer %>
+          <%= link_to "編集", edit_team_path(@team), class: "btn btn-sm btn-success" %>
+          <%= link_to "削除", team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
