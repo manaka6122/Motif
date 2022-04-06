@@ -25,6 +25,7 @@
       <li>
         <%= link_to "Mypage", customer_path(current_customer.id) %>
       </li>
+      <%= render "public/searches/tag_form" %>
     <% elsif admin_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>

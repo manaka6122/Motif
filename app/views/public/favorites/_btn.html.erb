@@ -1,0 +1,11 @@
+<% if activity.favorited_by?(current_customer) %>
+  <%= link_to activity_favorites_path(activity), method: :delete, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= activity.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to activity_favorites_path(activity), method: :post, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+    <%= activity.favorites.count %>
+  <% end %>
+<% end %>

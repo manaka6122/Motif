@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      
+      <%= render "public/customers/info", customer: @activity.customer %>
+    </div>
     <div class="col-md-8 offset-md-1">
       <h1>活動情報詳細</h1>
       <div class="flex">
@@ -34,12 +35,17 @@
               <td>開催日</td>
               <td><%= @activity.activity_on %></td>
             </tr>
+            <tr>
+              <td id="favorite_buttons_<%= @activity.id %>">
+                <%= render "public/favorites/btn", activity: @activity %>
+              </td>
+            </tr>
           </tbody>
         </table>
-        <% if @team.customer == current_customer %>
-          <%= link_to "編集", edit_team_path(@team), class: "btn btn-sm btn-success" %>
-          <%= link_to "削除", team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-        <% end %>
+        <% if @activity.customer == current_customer %>
+        <%= link_to "編集", edit_activity_path(@activity), class: "btn btn-sm btn-success" %>
+        <%= link_to "削除", activity_path(@activity), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+      <% end %>
       </div>
     </div>
   </div>

@@ -5,11 +5,18 @@ class Public::TeamsController < ApplicationController
 
   def create
     @team = current_customer.teams.new(team_params)
-    @team.save
-    redirect_to teams_path
+    tag_list = params[:team][:tag_name].split(nil)
+    if @team.save
+      @team.save_tags(tag_list)
+      redirect_to team_path(@team)
+    else
+      @teams = Team.all
+      render 'index'
+    end
   end
 
   def index
+    @tag_list = Tag.all
     @teams = Team.all
   end
 

@@ -1,23 +1,21 @@
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
+      <th>楽団名</th>
+      <th>活動場所</th>
+      <th>募集パート</th>
     </tr>
   </thead>
   <tbody>
     <% teams.each do |team| %>
     <tr>
-      <td>楽団名</td>
       <td><%= link_to team.name, team_path(team), class: "underline" %></td>
-    </tr>
-    <tr>
-      <td>活動場所</td>
       <td><%= team.address %></td>
-    </tr>
-    <tr>
-      <td>紹介文</td>
-      <td><%= team.introduction %></td>
+      <% team.tags.each do |tag| %>
+      <td>
+        <li style="list-style: none;"><%= link_to "#{tag.name}", teams_path(tag) %></li>
+      </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

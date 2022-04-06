@@ -32,6 +32,14 @@
                 <td><%= f.label :activity_on, "開催日" %></td>
                 <td><%= f.date_field :activity_on %></td>
               </tr>
+              <tr>
+                <td><%= f.label :status, "表示状態" %></td>
+                <td class="select_field">
+                  <%= f.collection_radio_buttons :status, Activity.statuses_i18n, :first , :last do |b| %>
+                    <%= b.label(class: "radio_button") { b.radio_button(class: "radio_button") + b.text } %>
+                  <% end %>
+                </td>
+              </tr>
             </tbody>
           </table>
           <div class="flex align-center pl5">

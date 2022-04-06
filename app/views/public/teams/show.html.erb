@@ -22,6 +22,14 @@
             <td><%= @team.address %></td>
           </tr>
           <tr>
+            <td>募集パート</td>
+            <td>
+              <% @team.tags.each do |tag| %>
+                <li style="list-style: none;"><%= tag.name %></li>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
             <td>紹介文</td>
             <td><%= @team.introduction %></td>
           </tr>

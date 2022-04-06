@@ -1,0 +1,6 @@
+ja:
+  enums:
+    activity:
+      status:
+        disclose: "公開"
+        undisclosed: "非公開"
