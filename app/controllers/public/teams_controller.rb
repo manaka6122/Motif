@@ -40,6 +40,12 @@ class Public::TeamsController < ApplicationController
     redirect_to teams_path
   end
 
+  def search
+     @tag_list = Tag.all
+     @tag = Tag.find(params[:tag_id])
+     @teams = @tag.team.all
+  end
+
   private
 
   def team_params

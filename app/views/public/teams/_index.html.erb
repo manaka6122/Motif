@@ -1,3 +1,4 @@
+
 <table class="table">
   <thead>
     <tr>
@@ -11,11 +12,11 @@
     <tr>
       <td><%= link_to team.name, team_path(team), class: "underline" %></td>
       <td><%= team.address %></td>
-      <% team.tags.each do |tag| %>
       <td>
-        <li style="list-style: none;"><%= link_to "#{tag.name}", teams_path(tag) %></li>
+        <% team.tags.each do |tag| %>
+          <li style="list-style: none;"><%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>
+        <% end %>
       </td>
-      <% end %>
     </tr>
     <% end %>
   </tbody>

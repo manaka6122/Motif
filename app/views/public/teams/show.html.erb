@@ -25,7 +25,7 @@
             <td>募集パート</td>
             <td>
               <% @team.tags.each do |tag| %>
-                <li style="list-style: none;"><%= tag.name %></li>
+                <li style="list-style: none;"><%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>
               <% end %>
             </td>
           </tr>
