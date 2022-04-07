@@ -14,5 +14,7 @@
     <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
+  <% else %>
+    <%= link_to 'Begin Chat', message_path(customer.id) %>
   <% end %>
 </div>

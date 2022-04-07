@@ -11,7 +11,8 @@ class Customer < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :teams, dependent: :destroy
-  has_many :messages
+  has_many :customer_rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   has_one_attached :profile_image
 

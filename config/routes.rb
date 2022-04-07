@@ -20,8 +20,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :teams, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :room, only: [:index, :show]
+    resources :rooms, only: [:index]
     get '/search', to: 'searches#search'
+    resources :messages, only: [:show, :create]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

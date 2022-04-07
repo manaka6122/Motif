@@ -1,2 +1,6 @@
-<h1>Public::Rooms#index</h1>
-<p>Find me in app/views/public/rooms/index.html.erb</p>
+<% @another_cusotomer_rooms.each do |e| %>
+  <%= link_to room_path(e.room.id) do %>
+    <%= e.customer.name %>とのDM<br>
+  <% end %>
+<% end %>
+
