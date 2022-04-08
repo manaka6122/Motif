@@ -1,12 +1,18 @@
 class Public::ActivitiesController < ApplicationController
+  before_action :set_activity, only: [:show, :destroy, :edit, :update]
+
   def new
     @activity = Activity.new
   end
 
   def create
     @activity = current_customer.activities.new(activity_params)
-    @activity.save
-    redirect_to activities_path
+    if @activity.save
+      redirect_to activities_path
+      flash[:notice] = '活動情報を投稿しました。'
+    else
+      render :index
+    end
   end
 
   def index
@@ -15,11 +21,9 @@ class Public::ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find(params[:id])
   end
 
   def destroy
-    @activity = Activity.find(params[:id])
     @activity.destroy
     redirect_to activities_path
   end
@@ -29,14 +33,21 @@ class Public::ActivitiesController < ApplicationController
   end
 
   def update
-    @activity = Activity.find(params[:id])
-    @activity.update(activity_params)
-    redirect_to activity_path
+    if @activity.update(activity_params)
+      redirect_to activity_path
+      flash[:notice] = '活動情報の更新が完了しました。'
+    else
+      render :show
+    end
   end
 
   private
 
   def activity_params
     params.require(:activity).permit(:image, :title, :content, :team_id, :activity_on, :status)
+  end
+
+  def set_activity
+     @activity = Activity.find(params[:id])
   end
 end

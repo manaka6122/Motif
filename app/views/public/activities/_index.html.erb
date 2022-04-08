@@ -12,7 +12,7 @@
     <% activities.each do |activity| %>
     <tr>
       <td><%= image_tag activity.customer.get_profile_image(50, 50) %></td>
-      <td><%= link_to activity.team.name, team_path(activity.team_id) %></td>
+      <td><%= activity.team.name %></td>
       <td><%= link_to activity.title, activity_path(activity) %></td>
       <td><%= activity.content%></td>
       <td id="favorite_buttons_<%= activity.id %>">

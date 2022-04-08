@@ -1,2 +1,47 @@
-<h1>Admin::Activities#show</h1>
-<p>Find me in app/views/admin/activities/show.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col col-md-10">
+      <h2>活動情報詳細</h2>
+      <div class="flex">
+        <div class="image_field">
+  			  <%= image_tag @activity.get_image(100, 100) %>
+  			</div>
+        <table>
+          <tr>
+            <th>投稿者名</th>
+            <td><%= link_to @activity.customer.name, admin_customer_path(@activity.customer) %></th>
+          </tr>
+          <tr>
+            <th>楽団名</th>
+            <td><%= @activity.team.name %></td>
+          </tr>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @activity.title %></td>
+          </tr>
+          <tr>
+            <th>内容</th>
+            <td><%= @activity.content %></td>
+          </tr>
+          <tr>
+            <th>開催日</th>
+            <td><%= @activity.activity_on %></td>
+          </tr>
+          <tr>
+            <th>表示状態</th>
+            <td><%= @activity.status_i18n %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= @activity.favorites.count %>
+            </td>
+          </tr>
+        </table>
+        <%= link_to "編集", edit_admin_activity_path(@activity), class: "btn btn-sm btn-success" %>
+        <%= link_to "削除", admin_activity_path(@activity), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

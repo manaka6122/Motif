@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col col-md-10">
+      <div class="text-danger">
+        <%= render 'layouts/errors', obj: @team %>
+      </div>
+      <h1>楽団情報編集</h1>
+      <%= form_with model: @team,  url: admin_team_path do |f| %>
+        <div>
+          <%= f.label :name, "楽団名" %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :address, "活動場所" %>
+          <%= f.text_field :address %>
+        </div>
+        <div>
+          <%= f.label :tag_name, "募集パート" %>
+          <%= f.text_field :tag_name , placeholder: "募集パートをスペース区切りで入力(例 フルート クラリネット" %>
+        </div>
+        <div>
+          <%= f.label :introduction, "紹介文" %>
+          <%= f.text_area :introduction %>
+        </div>
+        <%= f.submit "保存", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+</div>

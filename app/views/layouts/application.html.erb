@@ -11,34 +11,11 @@
   </head>
 
   <body>
-    <header>
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "楽団情報一覧", teams_path %>
-      </li>
-      <li>
-        <%= link_to "活動情報一覧", activities_path %>
-      </li>
-      <li>
-        <%= link_to "Mypage", customer_path(current_customer.id) %>
-      </li>
-      <%= render "public/searches/tag_form" %>
-    <% elsif admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-    </header>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <main>
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

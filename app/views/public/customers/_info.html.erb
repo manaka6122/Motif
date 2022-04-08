@@ -10,7 +10,7 @@
   </tr>
 </table>
 <div class="row">
-  <% if customer == current_customer %>
+  <% if customer == current_customer && customer.name != "guestuser" %>
     <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>

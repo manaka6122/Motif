@@ -1,6 +1,14 @@
-<% @another_cusotomer_rooms.each do |e| %>
-  <%= link_to room_path(e.room.id) do %>
-    <%= e.customer.name %>とのDM<br>
-  <% end %>
-<% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <table class="table">
+        <% @another_customer_rooms.each do |e| %>
+          <tr>
+            <td><%= link_to e.customer.name, message_path(e.customer.id) %></td>
+            <td><%= Message.find_by(id: e.room.message_ids.last).content %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

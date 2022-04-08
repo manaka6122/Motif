@@ -6,11 +6,9 @@
     <div class="col-md-8 offset-md-1">
       <h1>活動情報詳細</h1>
       <div class="flex">
-		    <div>
-			    <div class="image_field">
-				    <%= image_tag @activity.get_image(100, 100) %>
-			    </div>
-		    </div>
+			  <div class="image_field">
+				  <%= image_tag @activity.get_image(100, 100) %>
+			  </div>
         <table>
           <thead>
             <tr>
@@ -43,9 +41,9 @@
           </tbody>
         </table>
         <% if @activity.customer == current_customer %>
-        <%= link_to "編集", edit_activity_path(@activity), class: "btn btn-sm btn-success" %>
-        <%= link_to "削除", activity_path(@activity), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-      <% end %>
+          <%= link_to "編集", edit_activity_path(@activity), class: "btn btn-sm btn-success" %>
+          <%= link_to "削除", activity_path(@activity), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+        <% end %>
       </div>
     </div>
   </div>

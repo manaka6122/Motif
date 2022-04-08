@@ -1,4 +1,6 @@
 class Public::TeamsController < ApplicationController
+  before_action :set_team, only: [:show, :destroy, :edit, :update]
+  
   def new
     @team = Team.new
   end
@@ -9,6 +11,7 @@ class Public::TeamsController < ApplicationController
     if @team.save
       @team.save_tags(tag_list)
       redirect_to team_path(@team)
+      flash[:notice] = '楽団情報を登録しました。'
     else
       @teams = Team.all
       render 'index'
@@ -21,21 +24,20 @@ class Public::TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
   end
 
   def edit
-    @team = Team.find(params[:id])
   end
 
   def update
-    @team = Team.find(params[:id])
-    @team.update(team_params)
-    redirect_to team_path(@team)
+    if @team.update(team_params)
+      redirect_to team_path(@team)
+      flash[:notice] = '楽団情報の更新が完了しました。'
+    else
+      render :show
   end
 
   def destroy
-    @team = Team.find(params[:id])
     @team.destroy
     redirect_to teams_path
   end
@@ -50,5 +52,9 @@ class Public::TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name, :address, :introduction)
+  end
+  
+  def set_team
+    @team = Team.find(params[:id])
   end
 end

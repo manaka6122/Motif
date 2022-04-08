@@ -1,0 +1,21 @@
+<h2>活動情報一覧</h2>
+<table>
+  <thead>
+    <tr>
+      <th>投稿者名</th>
+      <th>楽団名</th>
+      <th>タイトル</th>
+      <th>投稿ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% activities.each do |activity| %>
+    <tr>
+      <td><%= activity.customer.name %></td>
+      <td><%= activity.team.name %></td>
+      <td><%= link_to activity.title, admin_activity_path(activity) %></td>
+      <td><%= activity.status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
