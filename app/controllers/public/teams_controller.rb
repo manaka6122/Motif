@@ -7,7 +7,7 @@ class Public::TeamsController < ApplicationController
 
   def create
     @team = current_customer.teams.new(team_params)
-    tag_list = params[:team][:tag_name].split(nil)
+    tag_list = params[:team][:tag_name].split(',')
     if @team.save
       @team.save_tags(tag_list)
       redirect_to team_path(@team)
@@ -30,7 +30,9 @@ class Public::TeamsController < ApplicationController
   end
 
   def update
+    tag_list = params[:team][:tag_name].split(',')
     if @team.update(team_params)
+      @team.save_tags(tag_list)
       redirect_to team_path(@team)
       flash[:notice] = '楽団情報の更新が完了しました。'
     else
