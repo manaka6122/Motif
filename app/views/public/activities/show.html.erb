@@ -10,35 +10,35 @@
 				  <%= image_tag @activity.get_image(100, 100) %>
 			  </div>
         <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>楽団名</td>
-              <td><%= link_to @activity.team.name, team_path(@activity.team_id) %></td>
-            </tr>
-            <tr>
-              <td>タイトル</td>
-              <td><%= @activity.title %></td>
-            </tr>
-            <tr>
-              <td>内容</td>
-              <td><%= @activity.content %></td>
-            </tr>
-            <tr>
-              <td>開催日</td>
-              <td><%= @activity.activity_on %></td>
-            </tr>
-            <tr>
-              <td id="favorite_buttons_<%= @activity.id %>">
-                <%= render "public/favorites/btn", activity: @activity %>
-              </td>
-            </tr>
-          </tbody>
+          <tr>
+            <th>楽団名</th>
+            <td><%= link_to @activity.team.name, team_path(@activity.team_id) %></td>
+          </tr>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @activity.title %></td>
+          </tr>
+          <tr>
+            <th>内容</th>
+            <td><%= @activity.content %></td>
+          </tr>
+          <tr>
+            <th>開催日</th>
+            <td><%= @activity.activity_on %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <% if customer_signed_in? %>
+            <td id="favorite_buttons_<%= @activity.id %>">
+              <%= render "public/favorites/btn", activity: @activity %>
+            </td>
+            <% else %>
+            <td>
+              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= @activity.favorites.count %>
+            </td>
+            <% end %>
+          </tr>
         </table>
         <% if @activity.customer == current_customer %>
           <%= link_to "編集", edit_activity_path(@activity), class: "btn btn-sm btn-success" %>

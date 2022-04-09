@@ -1,6 +1,6 @@
 class Public::TeamsController < ApplicationController
   before_action :set_team, only: [:show, :destroy, :edit, :update]
-  
+
   def new
     @team = Team.new
   end
@@ -35,6 +35,7 @@ class Public::TeamsController < ApplicationController
       flash[:notice] = '楽団情報の更新が完了しました。'
     else
       render :show
+    end
   end
 
   def destroy
@@ -53,7 +54,7 @@ class Public::TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:name, :address, :introduction)
   end
-  
+
   def set_team
     @team = Team.find(params[:id])
   end

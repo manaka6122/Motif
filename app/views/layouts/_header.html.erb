@@ -1,37 +1,70 @@
 <header>
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "楽団情報一覧", teams_path %>
-      </li>
-      <li>
-        <%= link_to "活動情報一覧", activities_path %>
-      </li>
-      <li>
-        <%= link_to "Mypage", customer_path(current_customer.id) %>
-      </li>
-      <li>
-        <%= link_to "Message", rooms_path %>
-      </li>
-      <%= render "public/searches/tag_form" %>
-    <% elsif admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "活動情報一覧", admin_activities_path %>
-      </li>
-      <li>
-        <%= link_to "楽団情報一覧", admin_teams_path %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-    </header>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand text-light" href="/"><span>Motif</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Mypage", customer_path(current_customer.id), class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Message", rooms_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "楽団情報一覧", teams_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "活動情報一覧", activities_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          </li>
+          <%= render "public/searches/tag_form" %>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "活動情報一覧", admin_activities_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "楽団情報一覧", admin_teams_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "会員情報一覧", admin_customers_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to new_customer_registration_path, class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", about_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "楽団情報一覧", teams_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "活動情報一覧", activities_path, class: 'nav-link text-light' %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

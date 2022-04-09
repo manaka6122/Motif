@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   }
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about', as: 'about'
-  devise_scope :public do
+  
+  devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
   scope module: :public do

@@ -15,9 +15,16 @@
       <td><%= activity.team.name %></td>
       <td><%= link_to activity.title, activity_path(activity) %></td>
       <td><%= activity.content%></td>
+      <% if customer_signed_in? %>
       <td id="favorite_buttons_<%= activity.id %>">
         <%= render "public/favorites/btn", activity: activity %>
       </td>
+      <% else %>
+      <td>
+        <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+        <%= activity.favorites.count %>
+      </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
