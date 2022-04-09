@@ -3,21 +3,25 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
+  
   namespace :admin do
     resources :customers, only: [:index, :show]
     resources :activities, only: [:index, :show, :edit, :update, :destroy]
     resources :teams, only: [:index, :show, :edit, :update, :destroy]
   end
+  
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
-  root to: 'public/homes#top'
-  get '/about' => 'public/homes#about', as: 'about'
   
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
+  
+  root to: 'public/homes#top'
+  get '/about' => 'public/homes#about', as: 'about'
+
   scope module: :public do
     resources :customers, only: [:show, :edit, :update]
     resources :activities do
