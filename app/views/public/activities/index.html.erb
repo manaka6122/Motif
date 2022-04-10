@@ -1,8 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1>活動情報一覧</h1>
-        <%= link_to "新規登録", new_activity_path %>
+      <span class="h3">活動情報一覧</span>
+        <%= link_to new_activity_path do %>
+          <i class="fa fa-plus-square"></i>
+        <% end %>
         <%= render "index", activities: @activities %>
     </div>
   </div>
