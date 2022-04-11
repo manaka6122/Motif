@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h2>会員情報</h2>
       <%= render "info", customer: @customer %>
       <h2 class="mt-3">楽団情報一覧</h2>
       <%= render "public/teams/index", teams: @teams %>
     </div>
     <div class="col-md-8">
-      
+      <%= render "public/activities/index", activities: @activities %>
     </div>
   </div>
 </div>

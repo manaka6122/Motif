@@ -1,9 +1,10 @@
 class Public::CustomersController < ApplicationController
   before_action :set_current_customer
   before_action :guest_user, only: [:edit]
-  
+
   def show
     @teams = @customer.teams
+    @activities = @customer.activities
   end
 
   def edit
@@ -17,17 +18,17 @@ class Public::CustomersController < ApplicationController
       render :show
     end
   end
-  
+
   private
 
   def customer_params
     params.require(:customer).permit(:name, :profile, :profile_image)
   end
-  
+
   def set_current_customer
     @customer = Customer.find(params[:id])
   end
-  
+
   def guest_user
     if @Customer.name == "guestuser"
       redirect_to customer_path(current_customer)

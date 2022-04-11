@@ -16,7 +16,6 @@ class Public::ActivitiesController < ApplicationController
   end
 
   def index
-    @activities_all = Activity.all
     @activities = Activity.where(status: 0)
   end
 
