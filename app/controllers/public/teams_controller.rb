@@ -20,7 +20,7 @@ class Public::TeamsController < ApplicationController
 
   def index
     @tag_list = Tag.all
-    @teams = Team.
+    @teams = Team.page(params[:page]).per(10)
   end
 
   def show
