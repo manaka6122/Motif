@@ -6,7 +6,7 @@
           <tr>
             <td><%= image_tag e.customer.get_profile_image(50, 50) %></td>
             <td><%= link_to e.customer.name, message_path(e.customer.id) %></td>
-            <td><%= Message.find_by(id: e.room.message_ids.last).content %></td>
+            <td><%= Message.find_by(id: e.room.message_ids.last)&.content %></td>
           </tr>
         <% end %>
       </table>

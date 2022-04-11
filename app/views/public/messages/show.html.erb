@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <h2>CHAT WITH <%= @customer.name %></h2>
+      <h2 >CHAT WITH <%= @customer.name %></h2>
         <% @messages.each do |message| %>
           <% if message.customer_id == current_customer.id %>
             <div class="current_user">
@@ -10,16 +10,16 @@
             </div>
           <% else %>
             <div class="visited_user">
-              <strong class="visited_user"><%= message.content %></strong>
               <small class="visited_user"><%= @customer.name %>さん</small>
+              <strong class="visited_user"><%= message.content %></strong>
             </div>
           <% end %>
         <% end %>
-            <%= form_with model: @message, data: {remote: true} do |f| %>
-              <%= f.text_field :content %>
-              <%= f.hidden_field :room_id %>
-              <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
-            <% end %>
+        <%= form_with model: @message, data: {remote: true} do |f| %>
+          <%= f.text_field :content %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
+        <% end %>
     </div>
   </div>
 </div>
