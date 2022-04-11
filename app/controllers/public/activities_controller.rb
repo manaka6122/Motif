@@ -16,7 +16,7 @@ class Public::ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = Activity.where(status: 0)
+    @activities = Activity.where(status: 0).page(params[:page])
   end
 
   def show

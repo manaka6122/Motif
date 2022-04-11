@@ -20,7 +20,7 @@ class Public::TeamsController < ApplicationController
 
   def index
     @tag_list = Tag.all
-    @teams = Team.all
+    @teams = Team.
   end
 
   def show
