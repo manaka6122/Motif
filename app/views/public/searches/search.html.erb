@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <%= render "public/customers/info", customer: current_customer %>
-    </div>
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-10 offset-md-1">
+      <% if @records == [] %>
+        <h2 class = "seach-result">検索結果はありません</h2>
+      <% else %>
       <h2>"<%= @content %>"</h2>
         <%= render 'public/teams/index', teams: @records %>
+      <% end %>
     </div>
   </div>
 </div>

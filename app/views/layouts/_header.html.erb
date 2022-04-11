@@ -26,7 +26,7 @@
               <i class="fas fa-sign-out-alt"></i>
             <% end %>
           </li>
-          <%= render "public/searches/tag_form" %>
+          <%= render "public/searches/form" %>
         <% elsif admin_signed_in? %>
           <li class="nav-item">
             <%= link_to "活動情報一覧", admin_activities_path, class: 'nav-link text-light' %>
