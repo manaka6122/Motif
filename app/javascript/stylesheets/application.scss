@@ -1,5 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300';
+
 
 * {
   margin: 0;
@@ -7,31 +9,60 @@
   box-sizing: border-box;
 }
 
-html{
+html {
   position: relative;
-  min-height: 100%;
-  padding-bottom: 200px;
-  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
 }
 
 main{
   height: 100%;
+  align-items: center;
+  background-color: #f5f5f5;
 }
 
-header{
+header {
   width: 100%;
-  height: 30%;
-  background-color: #4682B4;
+  background-color: #666666;
   top: 0;
+  .navbar {
+    font-family: 'Alegreya Sans SC', sans-serif;
+  }
+  .navbar-brand {
+    font-size: 50px;
+  }
+  .nav-item {
+    font-size: 20px;
+  }
 }
 
-footer{
+footer {
   width: 100%;
-  height: 100px;
-  background-color: #4682B4;
+  margin-top: auto;
+  padding: 20px 0;
   bottom: 0;
+  background-color: #666666;
   position: absolute;
+  text-align: center;
+  p {
+    margin: 0;
+    color: #fff;
+  }
 }
+
 
 #error_explanation {
   width: 450px;
@@ -44,6 +75,17 @@ footer{
 .notice {
   text-align: center;
   background-color: lightBlue;
+}
+
+.form_sign {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+  .form_group {
+    position: relative;
+    margin-bottom: 1rem;
+  }
 }
 
 .pagination {
@@ -64,10 +106,10 @@ footer{
   border-radius: 15px;
 }
 
-.current_user {
-    color: red;
+.current-user {
+    color: #fff;
     text-align: right;
-    background-color: #fff;
+    background-color: brown;
     width: fit-content;
     margin: 10px 0 0 auto;
     border-radius: 30px;
@@ -79,18 +121,18 @@ footer{
     padding: 10px;
 }
 
-.visited_user {
+.visited-user {
     color: #fff;
     margin: 10px;
     background-color: brown;
     text-align: left;
     width: fit-content;
     margin: 10px auto 0 0;
-    border-radius:30px;
-    -webkit-border-radius:30px;
-    -moz-border-radius:30px;
-    -ms-border-radius:30px;
-    -o-border-radius:30px;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
     box-sizing: border-box;
     padding: 10px;
 }

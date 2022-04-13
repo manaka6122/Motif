@@ -1,2 +1,2 @@
-$('.message').append("<small class="current_user"><%= current_customer.name %>さん</small>");
+$('.message').append("<strong class="current_user"><%= @message.content %></strong>");
 $('input[type=text]').val("")
