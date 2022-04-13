@@ -22,6 +22,8 @@ class Public::MessagesController < ApplicationController
   def create
     @message = current_customer.messages.new(message_params)
     @message.save
+    @room = Room.find(@message.room.id)
+    @messages = @room.messages
   end
 
   private
