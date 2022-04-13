@@ -12,14 +12,16 @@
 html {
   position: relative;
   height: 100%;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 body {
-  height: 100%;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-right: auto;
-  margin-left: auto;
+  height: auto;
+  margin: 0;
   font-family: "Helvetica Neue",
     Arial,
     "Hiragino Kaku Gothic ProN",

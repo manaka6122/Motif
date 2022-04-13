@@ -1,8 +1,8 @@
 <div class="card-deck">
   <div class="row">
     <% activities.each do |activity| %>
-      <div class="col-md-5 m-3">
-        <div class="card" style="width:450px;">
+      <div class="col-md-5 m-2">
+        <div class="card w-30">
           <div class="row no-gutters">
             <div class="col-sm-6">
               <%= link_to activity_path(activity) do %>
@@ -43,4 +43,6 @@
     <% end %>
   </div>
 </div>
-<%= paginate activities %>
+<div class="text-center">
+  <%= paginate activities %>
+</div>
