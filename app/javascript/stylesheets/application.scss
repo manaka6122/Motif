@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  height: auto;
+  height: 100%;
   margin: 0;
   font-family: "Helvetica Neue",
     Arial,
@@ -32,9 +32,11 @@ body {
 
 main{
   height: 100%;
+  margin: 0 auto;
   align-items: center;
   background-color: #f5f5f5;
 }
+
 
 header {
   width: 100%;
@@ -64,6 +66,10 @@ footer {
   }
 }
 
+.navber>h3 {
+  margin: 15px;
+
+}
 
 #error_explanation {
   width: 450px;
@@ -136,4 +142,13 @@ footer {
     -o-border-radius: 30px;
     box-sizing: border-box;
     padding: 10px;
+}
+
+.size {
+  font-size: 2rem;
+  color: grey;
+}
+
+.message-form {
+  
 }

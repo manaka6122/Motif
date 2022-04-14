@@ -30,7 +30,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def guest_user
-    if @Customer.name == "guestuser"
+    if @customer.name == "guestuser"
       redirect_to customer_path(current_customer)
       flash[:notice] = 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end

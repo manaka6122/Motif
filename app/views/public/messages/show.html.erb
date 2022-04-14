@@ -1,15 +1,19 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-10">
-      <h2 ><%= @customer.name %></h2>
+    <div class="col-md-8">
+      <div class="navber">
+        <h3><%= @customer.name %></h3>
+      </div>
       <div id="message">
         <%= render "public/messages/index", messages: @messages, customer: @customer %>
       </div>
-      <%= form_with model: @message, data: {remote: true} do |f| %>
-        <%= f.text_field :content, class: "mt-3" %>
-        <%= f.hidden_field :room_id %>
-        <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
-      <% end %>
+      <div class="form-inline float-right mt-3">
+        <%= form_with model: @message, data: {remote: true} do |f| %>
+          <%= f.text_field :content, placeholder: "メッセージを入力してください", class: "form-control" %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信", class:"btn btn-sm btn-outline-success chat-btn" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

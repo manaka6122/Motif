@@ -1,8 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1>楽団情報一覧</h1>
-        <%= link_to "新規登録", new_team_path %>
+      <div class="navber">
+        <h3>
+          楽団情報一覧
+          <%= link_to new_team_path do %>
+            <i class='fa fa-plus-circle size'></i>
+          <% end %>
+        </h3>
+      </div>
         <%= render "index", teams: @teams, tag_list: @tag_list %>
     </div>
   </div>
