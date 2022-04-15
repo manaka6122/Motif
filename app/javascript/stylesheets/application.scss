@@ -47,19 +47,35 @@ header {
   }
   .navbar-brand {
     font-size: 50px;
+    color: #fff;
   }
-  .nav-item {
+
+  .navbar-brand:hover, .nav-link:hover {
+    color: orange;
+  }
+  .nav-link {
     font-size: 20px;
+    color: #fff;
   }
+}
+
+.btn-outline-success {
+  color: orange;
+  border-color: orange;
+}
+
+.btn-outline-success:hover {
+  background: orange;
+  border-color: orange;
 }
 
 footer {
   width: 100%;
-  margin-top: auto;
   padding: 20px 0;
-  background-color: #666666;
   position: absolute;
+  background-color: #666666;
   text-align: center;
+  bottom: 0;
   p {
     margin: 0;
     color: #fff;
@@ -68,7 +84,52 @@ footer {
 
 .navber>h3 {
   margin: 15px;
+}
 
+.img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}
+
+.img-wrap p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: white;
+  font-size: 90px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  }
+
+  .img-wrap img {
+  width: 100%;
+  margin-top: 50px;
+  }
+
+  .btn-primary {
+    color: #333;
+    padding: 15px 25px;
+    font-size: 16px;
+    border: 3px solid #333;
+    background: transparent;
+  }
+
+  .top-btn {
+    width: 200px;
+  }
+
+  .btn-primary:hover {
+    background: orange;
+  }
+
+.btn-sm {
+  width: 100px;
+  padding: 10px 15px;
 }
 
 #error_explanation {
@@ -149,6 +210,4 @@ footer {
   color: grey;
 }
 
-.message-form {
-  
-}
+

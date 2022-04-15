@@ -1,47 +1,37 @@
 <div class="card-deck">
-  <div class="row">
-    <% activities.each do |activity| %>
-      <div class="col-md-5 m-2">
-        <div class="card w-30">
-          <div class="row no-gutters">
-            <div class="col-sm-6">
-              <%= link_to activity_path(activity) do %>
-                <%= image_tag activity.get_image(100, 100), class: "card-img-top" %>
+  <% activities.each do |activity| %>
+    <div class="card">
+      <%= link_to activity_path(activity) do %>
+        <%= image_tag activity.get_image(100, 100), class: "card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            <%= image_tag activity.customer.get_profile_image(50, 50), class: "mt-3 rounded-circle" %>
+          </div>
+          <div class="col-9">
+            <p class="card-title">
+              <%= link_to(activity_path(activity), class: "text-dark") do %>
+                <strong><i class="far fa-flag"></i><span> <%= activity.title %></span></strong>
               <% end %>
-            </div>
-            <div class="col-sm-6">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-3">
-                    <%= image_tag activity.customer.get_profile_image(50, 50), class: "mt-3 rounded-circle" %>
-                  </div>
-                  <div class="col-9">
-                    <p class="card-title">
-                      <%= link_to(activity_path(activity), class: "text-dark") do %>
-                        <strong><i class="far fa-flag"></i><span> <%= activity.title %></span></strong>
-                      <% end %>
-                    </p>
-                    <p class="card-text">内容：<%= activity.content%></p>
-                    <span><i class="fas fa-user"></i> By <%= activity.team.name %> ｜ </span>
-                    <% if customer_signed_in? %>
-                      <span id="favorite_buttons_<%= activity.id %>">
-                        <%= render "public/favorites/btn", activity: activity %>
-                      </span>
-                    <% else %>
-                      <span>
-                        <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                        <%= activity.favorites.count %>
-                      </span>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </p>
+            <p class="card-text">内容：<%= activity.content%></p>
+            <span><i class="fas fa-user"></i> By <%= activity.team.name %> ｜ </span>
+            <% if customer_signed_in? %>
+              <span id="favorite_buttons_<%= activity.id %>">
+                <%= render "public/favorites/btn", activity: activity %>
+              </span>
+            <% else %>
+              <span>
+                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= activity.favorites.count %>
+              </span>
+            <% end %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 <div class="text-center">
   <%= paginate activities %>

@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 offset-md-1">
-      <div class="navber">
-        <h3>
-          活動情報一覧
-          <%= link_to new_activity_path do %>
-            <i class='fa fa-plus-circle size'></i>
-          <% end %>
-        </h3>
-      </div>
-        <%= render "index", activities: @activities %>
+    <h3 class="font-weight-bold mx-auto my-3">
+      活動情報新規投稿
+      <%= link_to new_activity_path do %>
+        <i class='fa fa-plus-circle size'></i>
+      <% end %>
+    </h3>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render "index", activities: @activities %>
     </div>
   </div>
 </div>
