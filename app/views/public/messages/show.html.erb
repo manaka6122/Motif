@@ -1,9 +1,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="navber">
-        <h3><%= @customer.name %></h3>
-      </div>
+      <h3 class="font-weight-bold mt-3"><%= @customer.name %></h3>
+      <div class="hline"></div>
       <div id="message">
         <%= render "public/messages/index", messages: @messages, customer: @customer %>
       </div>

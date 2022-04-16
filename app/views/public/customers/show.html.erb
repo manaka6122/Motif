@@ -1,16 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="navber">
-        <h3>会員情報</h3>
-      </div>
+  <div class="row mx-auto">
+    <div class="col-md-5 mt-3">
       <%= render "info", customer: @customer %>
-      <div class="navber">
-        <h3>楽団情報一覧</h3>
-      </div>
+      <h3 class="font-weight-bold mt-3">楽団情報一覧</h3>
+      <div class="hline"></div>
       <%= render "public/teams/index", teams: @teams %>
     </div>
-    <div class="col-md-8 customer-activities">
+    <div class="col-md-7 offset-xs-3 customer-activities">
       <%= render "public/activities/index", activities: @activities %>
     </div>
   </div>

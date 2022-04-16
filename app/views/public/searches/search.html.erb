@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
+      <h3 class="font-weight-bold mt-3">"<%= @content %>"検索結果</h3>
+      <div class="hline"></div>
       <% if @records == [] %>
-        <h2 class = "seach-result">検索結果はありません</h2>
+        <h5>一致する検索結果がありません</h5>
       <% else %>
-      <h2>"<%= @content %>"</h2>
-        <%= render 'public/teams/index', teams: @records %>
+        <%= render "public/teams/index", teams: @records %>
       <% end %>
     </div>
   </div>

@@ -14,7 +14,7 @@ class Public::TeamsController < ApplicationController
       flash[:notice] = '楽団情報を登録しました。'
     else
       @teams = Team.all
-      render 'index'
+      render :index
     end
   end
 
@@ -43,12 +43,6 @@ class Public::TeamsController < ApplicationController
   def destroy
     @team.destroy
     redirect_to teams_path
-  end
-
-  def search
-     @tag_list = Tag.all
-     @tag = Tag.find(params[:tag_id])
-     @teams = @tag.team.all
   end
 
   private

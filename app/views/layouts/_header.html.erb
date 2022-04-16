@@ -32,35 +32,35 @@
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "About", about_path, class: 'nav-link text-light' %>
+            <%= link_to "About", about_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Activities", admin_activities_path, class: 'nav-link text-light' %>
+            <%= link_to "Activities", admin_activities_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Bands", admin_teams_path, class: 'nav-link text-light' %>
+            <%= link_to "Bands", admin_teams_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Customers", admin_customers_path, class: 'nav-link text-light' %>
+            <%= link_to "Customers", admin_customers_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Logout", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+            <%= link_to "Logout", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "About", about_path, class: 'nav-link text-light' %>
+            <%= link_to "About", about_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Bands", teams_path, class: 'nav-link text-light' %>
+            <%= link_to "Bands", teams_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Activities", activities_path, class: 'nav-link text-light' %>
+            <%= link_to "Activities", activities_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Signin", new_customer_registration_path, class: 'nav-link text-light' %>
+            <%= link_to "Signin", new_customer_registration_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "Login", new_customer_session_path, class: 'nav-link text-light' %>
+            <%= link_to "Login", new_customer_session_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%= render "public/searches/form" %>

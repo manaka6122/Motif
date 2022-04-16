@@ -1,45 +1,49 @@
 <div class="container">
   <div class="row">
-    <h3 class="font-weight-bold mx-auto my-3">About</h3>
-  </div>
-  <div class="row">
-    <p class="text-center h6 mx-auto" style="line-height:2rem">
-      <strong>Motif</strong>は「もっと気軽に吹奏楽を楽しみたい！」という人と楽団を繋げるコミュニティサイトです。<br>
-      吹奏楽団に入りたいと思っていても想像よりハードルが高く諦め、<br>
-      持っている楽器はただの置き物になってしまっている人が多くいると思います。<br>
-      吹奏楽は色々な世代の方々との交流・皆で一つの音楽を作り上げる充実感を得ることができ、<br>
-      かけがえのない日々となるはずです。
-    </p>
-  </div>
-  <div id="carouselExampleIndicators" class="carousel slide col-md-8 mx-auto" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-      </ol>
-      <div class="carousel-inner text-center">
-        <div class="carousel-item active">
-          <%= image_tag 'horn.jpg',size: '600x370' %>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag 'brass_instrument.jpg',size: '600x370' %>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag 'vibraphone.jpg',size: '600x370' %>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag 'sax.jpg',size: '600x370' %>
-        </div>
+    <div class="col-md-10 offset-md-1">
+      <h3 class="font-weight-bold mt-3">About</h3>
+    <div class="hline"></div>
+    <div class="row">
+      <div class="col-md-12">
+      <p class="text-center h6 mx-auto" style="line-height:2rem">
+        <strong>Motif</strong>は「もっと気軽に吹奏楽を楽しみたい！」という人と楽団を繋げるコミュニティサイトです。<br>
+        吹奏楽団に入りたいと思っていても想像よりハードルが高く諦め、<br>
+        持っている楽器はただの置き物になってしまっている人が多くいると思います。<br>
+        吹奏楽は色々な世代の方々との交流・皆で一つの音楽を作り上げる充実感を得ることができ、<br>
+        かけがえのない日々となるはずです。
+      </p>
       </div>
-      <a class="carousel-control-prev ml-4" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next mr-4" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
-
+    <div id="carouselExampleIndicators" class="carousel slide col-md-8 mx-auto" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner text-center">
+          <div class="carousel-item active">
+            <%= image_tag 'horn.jpg',size: '600x370' %>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag 'brass_instrument.jpg',size: '600x370' %>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag 'vibraphone.jpg',size: '600x370' %>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag 'sax.jpg',size: '600x370' %>
+          </div>
+        </div>
+        <a class="carousel-control-prev ml-4" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next mr-4" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
