@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h3 class="font-weight-bold mt-3">活動情報一覧</h3>
+      <h3 class="font-weight-bold mt-3">
+        活動情報一覧
+        <%= link_to new_activity_path do %>
+          <i class='fa fa-plus-circle size'></i>
+        <% end %>
+      </h3>
       <div class="hline"></div>
       <%= render "index", activities: @activities %>
     </div>

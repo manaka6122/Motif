@@ -4,9 +4,9 @@ class Team < ApplicationRecord
   has_many :team_tags, dependent: :destroy
   has_many :tags, through: :team_tags
 
-  validates :name,presence:true
-  validates :address,presence:true
-  validates :introduction,presence:true,length:{maximum:200}
+  validates :name, presence:true
+  validates :address, presence:true
+  validates :introduction, presence:true, length:{maximum:200}
 
   def save_tags(sent_tags)
      # 現在のユーザーの持っているtagを引っ張ってきている
@@ -31,6 +31,13 @@ class Team < ApplicationRecord
       Team.where(['name LIKE(?) OR address LIKE(?)', "%#{content}%", "%#{content}%"])
     else
       Team.all
+    end
+  end
+
+  def self.search_from_tags(content)
+    result = Team.all
+    if content != ""
+      result = result.joins(:tags).where('tags.name LIKE(?)', '%' + content + '%')
     end
   end
 

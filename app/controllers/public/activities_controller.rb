@@ -9,9 +9,9 @@ class Public::ActivitiesController < ApplicationController
     @activity = current_customer.activities.new(activity_params)
     if @activity.save
       redirect_to activities_path
-      flash[:notice] = '活動情報を投稿しました。'
+      flash[:notice] = "活動情報を投稿しました。"
     else
-      render :index
+      render :new
     end
   end
 

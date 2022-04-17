@@ -3,7 +3,7 @@ class Admin::TeamsController < ApplicationController
   before_action :ensure_team, only: [:show, :edit, :update, :destroy]
 
   def index
-    @teams = Team.all
+    @teams = Team.page(params[:page]).per(10)
   end
 
   def show
@@ -15,7 +15,7 @@ class Admin::TeamsController < ApplicationController
   def update
     if @team.update(team_params)
       redirect_to admin_team_path(@team)
-      flash[:notice] = '楽団情報がの更新が完了しました。'
+      flash[:notice] = "楽団情報がの更新が完了しました。"
     else
       render :edit
     end
@@ -23,7 +23,7 @@ class Admin::TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    redirect_to team_path(@team)
+    redirect_to admin_teams_path
   end
 
   private

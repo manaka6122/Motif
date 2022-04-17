@@ -4,3 +4,25 @@ ja:
       status:
         disclose: "公開"
         undisclosed: "非公開"
+
+  activerecord:
+      attributes:
+        customer:
+          email: "メールアドレス"
+          password: "パスワード"
+          name: "名前"
+          profile: "プロフィール"
+
+        activity:
+          title: "タイトル"
+          content: "内容"
+          activity_on: "開催日"
+          team: "楽団名"
+
+        team:
+          name: "楽団名"
+          address: "活動場所"
+          introduction: "紹介文"
+
+        tag:
+          name: "パート"

@@ -1,30 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <div class="navber">
-        <h3>会員情報編集</h3>
-      </div>
+    <div class="col-md-8 mx-auto">
+      <h3 class="font-weight-bold mt-3">会員情報編集</h3>
+      <div class="hline"></div>
       <%= form_with model: @customer do |f| %>
-      <div class="form-group row">
+      <div class="form-group row mt-5">
         <%= f.label :image, "プロフィール画像", class: "col-form-label col-sm-4" %>
         <div class="col-sm-8">
           <%= f.file_field :profile_image, class: "form-control-file", accept: 'image/*' %>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row mt-3">
         <%= f.label :name, "名前", class: "col-form-label col-sm-4" %>
         <div class="col-sm-8">
           <%= f.text_field :name, class: "form-control" %>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row mt-3">
         <%= f.label :profile, "紹介文", class: "col-form-label col-sm-4" %>
         <div class="col-sm-8">
           <%= f.text_area :profile, class: "form-control" %>
         </div>
       </div>
-      <div class="form-group">
-        <%= f.submit "保存", class: "btn btn-outline-primary" %>
+      <div class="form-group text-center mt-3">
+        <%= f.submit "保存", class: "btn btn-sm btn-primary" %>
       </div>
       <% end %>
     </div>

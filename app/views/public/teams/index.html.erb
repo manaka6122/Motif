@@ -4,7 +4,12 @@
      <%= render "tag_list", tag_list: @tag_list %>
     </div>
     <div class="col-md-8 offset-md-2 mx-auto">
-      <h3 class="font-weight-bold mt-3">楽団情報一覧</h3>
+      <h3 class="font-weight-bold mt-3">
+        楽団情報一覧
+        <%= link_to new_team_path do %>
+          <i class='fa fa-plus-circle size'></i>
+        <% end %>
+      </h3>
       <div class="hline"></div>
       <%= render "index", teams: @teams, tag_list: @tag_list %>
     </div>

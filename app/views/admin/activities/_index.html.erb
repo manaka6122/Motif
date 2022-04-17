@@ -1,5 +1,4 @@
-<h2>活動情報一覧</h2>
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>投稿者名</th>
@@ -19,3 +18,6 @@
     <% end %>
   </tbody>
 </table>
+<div class="text-center">
+  <%= paginate activities %>
+</div>

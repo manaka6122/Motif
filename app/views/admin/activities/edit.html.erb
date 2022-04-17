@@ -1,53 +1,52 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-md-8 mx-auto">
+      <h3 class="font-weight-bold mx-auto my-3">活動情報新編集</h3>
+      <div class="hline"></div>
       <div class="text-danger">
         <%= render 'layouts/errors', obj: @activity %>
       </div>
-      <h2>活動情報新編集</h2>
       <%= form_with model: @activity, url: admin_activity_path do |f| %>
-        <div class="flex">
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><%= f.label :image, "画像" %></td>
-                <td><%= f.file_field :image, accept: "image/*" %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :team_id, "楽団名" %></td>
-                <td class="select_field"><%= f.collection_select :team_id, Team.all, :id, :name %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :title, "タイトル" %></td>
-                <td><%= f.text_field :title %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :content, "内容" %></td>
-                <td><%= f.text_area :content %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :activity_on, "開催日" %></td>
-                <td><%= f.date_field :activity_on %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :status, "表示状態" %></td>
-                <td class="select_field">
-                  <%= f.collection_radio_buttons :status, Activity.statuses_i18n, :first , :last do |b| %>
-                    <%= b.label(class: "radio_button") { b.radio_button(class: "radio_button") + b.text } %>
-                  <% end %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="flex align-center pl5">
-    			  <%= f.submit "保存", class: "btn btn-primary" %>
-    		  </div>
+        <div class="form-group row mt-5">
+          <%= f.label :image, "画像", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
+          </div>
+        </div>
+        <div class="form-group row mt-3">
+          <%= f.label :team_id, "楽団名", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.collection_select(:team_id, Team.all, :id, :name, {class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="form-group row mt-3">
+          <%= f.label :title, "タイトル", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row mt-3">
+          <%= f.label :content, "内容", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.text_area :content, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row mt-3">
+          <%= f.label :activity_on, "開催日", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.date_field :activity_on, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row mt-3">
+          <%= f.label :status, "表示状態", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.collection_radio_buttons :status, Activity.statuses_i18n, :first , :last do |b| %>
+              <%= b.label(class: "radio_button") { b.radio_button(class: "radio_button") + b.text } %>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group text-center mt-3">
+           <%= f.submit "保存", class: "btn btn-sm btn-primary" %>
         </div>
       <% end %>
     </div>

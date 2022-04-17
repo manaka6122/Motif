@@ -6,13 +6,17 @@
       <div id="message">
         <%= render "public/messages/index", messages: @messages, customer: @customer %>
       </div>
-      <div class="message-form form-inline float-right mt-3">
         <%= form_with model: @message, data: {remote: true} do |f| %>
+        <div class="form-row mx-auto mt-3 mb-3">
+        <div class="col-9">
           <%= f.text_field :content, placeholder: "メッセージを入力してください", class: "form-control" %>
           <%= f.hidden_field :room_id %>
-          <%= f.submit "送信", class:"btn btn-sm btn-outline-success chat-btn" %>
+        </div>
+        <div class="col-3">
+          <%= f.submit "送信", class: "btn btn-sm btn-primary chat-btn" %>
+        </div>
+        </div>
         <% end %>
-      </div>
     </div>
   </div>
 </div>

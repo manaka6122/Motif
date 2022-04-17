@@ -5,6 +5,11 @@ class Activity < ApplicationRecord
 
   has_one_attached :image
 
+  validates :title, presence:true
+  validates :content, presence:true, length:{maximum:200}
+  validates :status, presence:true
+  validates :activity_on, presence:true
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

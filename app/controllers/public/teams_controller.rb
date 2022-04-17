@@ -11,10 +11,9 @@ class Public::TeamsController < ApplicationController
     if @team.save
       @team.save_tags(tag_list)
       redirect_to team_path(@team)
-      flash[:notice] = '楽団情報を登録しました。'
+      flash[:notice] = "楽団情報を登録しました。"
     else
-      @teams = Team.all
-      render :index
+      render :new
     end
   end
 
@@ -34,7 +33,7 @@ class Public::TeamsController < ApplicationController
     if @team.update(team_params)
       @team.save_tags(tag_list)
       redirect_to team_path(@team)
-      flash[:notice] = '楽団情報の更新が完了しました。'
+      flash[:notice] = "楽団情報の更新が完了しました。"
     else
       render :show
     end

@@ -1,8 +1,8 @@
-<div class="card-columns mt-3 mb-3">
+<div class="card-columns d-flex flex-wrap mt-3 mb-3">
   <% activities.each do |activity| %>
-    <div class="card mx-auto", style="width: 15rem;">
+    <div class="card mx-auto", style="width: 15rem; height: 380px">
       <%= link_to activity_path(activity) do %>
-        <%= image_tag activity.get_image(100, 100), class: "card-img-top" %>
+        <%= image_tag activity.get_image(200, 200), class: "card-img-top" %>
       <% end %>
       <div class="card-body">
         <div class="row">

@@ -1,22 +1,32 @@
-<div class="text-danger">
-  <%= render 'layouts/errors', obj: @team %>
+<div class="text-danger mt-2">
+  <%= render 'layouts/errors', obj: team %>
 </div>
-<%= form_with model: @team do |f| %>
-  <div>
-    <%= f.label :name, "楽団名" %>
-    <%= f.text_field :name %>
+<%= form_with model: team, local:true do |f| %>
+  <div class="form-group row mt-5">
+    <%= f.label :name, "楽団名", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.label :address, "活動場所" %>
-    <%= f.text_field :address %>
+  <div class="form-group row mt-3">
+    <%= f.label :address, "活動場所", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.label :tag_name, "募集パート" %>
-    <%= f.text_field :tag_name , placeholder: "募集パートをスペース区切りで入力(例 フルート クラリネット" %>
+  <div class="form-group row mt-3">
+    <%= f.label :tag_name, "募集パート", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :tag_name , placeholder: "募集パートを（ , ）区切りで入力", class: "form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.label :introduction, "紹介文" %>
-    <%= f.text_area :introduction %>
+  <div class="form-group row mt-3">
+    <%= f.label :introduction, "紹介文", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8">
+      <%= f.text_area :introduction, class: "form-control" %>
+    </div>
   </div>
-  <%= f.submit submit, class: "btn btn-primary" %>
-  <% end %>
+  <div class="form-group text-center mt-3">
+    <%= f.submit submit, class: "btn btn-sm btn-primary" %>
+  </div>
+<% end %>

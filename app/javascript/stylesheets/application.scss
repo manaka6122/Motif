@@ -31,10 +31,10 @@ body {
 }
 
 main{
-  height: 100%;
-  margin: 0 auto;
-  align-items: center;
-  background-color: #f5f5f5;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 64px;
+  box-sizing: border-box;
 }
 
 
@@ -83,6 +83,7 @@ footer {
   width: 100%;
   padding: 20px 0;
   position: absolute;
+  bottom: 0;
   background-color: #666666;
   text-align: center;
   p {
@@ -141,7 +142,7 @@ a:hover {
     width: 200px;
   }
 
-  .btn-primary:hover, .btn-tag:hover:hover {
+  .btn-primary:hover, .btn-tag:hover:hover, .btn-outline-secondary:hover {
     background: orange;
     border: orange;
   }
@@ -159,9 +160,15 @@ a:hover {
   margin: 4px;
 }
 
+.field_with_errors {
+  display: contents
+}
+
 #error_explanation {
   width: 450px;
   border: 2px solid red;
+  color: red;
+  list-style: none;
   padding: 7px 7px 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
@@ -239,10 +246,6 @@ a:hover {
 
 .fa-flag {
   color: black;
-}
-
-.card {
-  width: 18rem;
 }
 
 .customer-activities {

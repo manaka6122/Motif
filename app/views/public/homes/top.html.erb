@@ -20,7 +20,7 @@
         <div class="col-md-10 offset-md-1 mt-5">
           <div class="card-deck">
             <% @activities.last(3).each do |activity| %>
-            <div class="card">
+            <div class="card", style="width: 18rem;">
               <%= link_to activity_path(activity) do %>
                 <%= image_tag activity.get_image(100, 100), class: "card-img-top" %>
               <% end %>

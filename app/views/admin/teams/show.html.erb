@@ -1,33 +1,41 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col col-md-10">
-      <h2>楽団情報詳細</h2>
-      <table>
-          <tr>
-            <th>投稿者</th>
-            <td><%= link_to @team.customer.name, admin_customer_path(@team.customer) %></th>
-          </tr>
-          <tr>
-            <th>楽団名</th>
-            <td><%= @team.name %></td>
-          </tr>
-          <tr>
-            <th>活動場所</th>
-            <td><%= @team.address %></td>
-          </tr>
-          <tr>
-            <th>募集パート</th>
-            <% @team.tags.each do |tag| %>
-              <td><%= tag.name %></td>
-            <% end %>
-          </tr>
-          <tr>
-            <th>紹介文</th>
-            <td><%= @team.introduction %></td>
-          </tr>
-        </table>
-        <%= link_to "編集", edit_admin_team_path(@team), class: "btn btn-sm btn-success" %>
-        <%= link_to "削除", admin_team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+  <div class="row">
+    <div class="col-md-3 mt-3">
+      <%= render "admin/customers/info", customer: @team.customer %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h3 class="font-weight-bold mt-3">楽団情報詳細</h3>
+      <div class="hline"></div>
+      <div class="row justify-content-center mt-2">
+        <div class="col-md-12 mt-3">
+          <table class="table w-100">
+            <tr class="row">
+              <th class="col-4">楽団名</th>
+              <td class="col-8"><%= @team.name %></td>
+            </tr>
+            <tr class="row">
+              <th class="col-4">活動場所</th>
+              <td class="col-8"><%= @team.address %></td>
+            </tr>
+            <tr class="row">
+              <th class="col-4">募集パート</th>
+              <td class="col-8">
+                <% @team.tags.each do |tag| %>
+                  <li style="list-style: none;"><%= tag.name %></li>
+                <% end %>
+              </td>
+            </tr>
+            <tr class="row">
+              <th class="col-4">紹介文</th>
+              <td class="col-8"><%= @team.introduction %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12 mt-5">
+          <%= link_to "編集", edit_admin_team_path(@team), class: "btn btn-sm btn-primary mr-2" %>
+          <%= link_to "削除", admin_team_path(@team), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-primary" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

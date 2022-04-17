@@ -3,7 +3,7 @@ class Admin::ActivitiesController < ApplicationController
   before_action :ensure_activity, only: [:show, :edit, :update, :destroy]
 
   def index
-    @activities = Activity.all
+    @activities = Activity.page(params[:page]).per(10)
   end
 
   def show
@@ -15,7 +15,7 @@ class Admin::ActivitiesController < ApplicationController
   def update
     if @activity.update(activity_params)
       redirect_to admin_activity_path(@activity)
-      flash[:notice] = '活動情報の更新が完了しました。'
+      flash[:notice] = "活動情報の更新が完了しました。"
     else
       render :edit
     end
