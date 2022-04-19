@@ -9,7 +9,7 @@ class Public::ActivitiesController < ApplicationController
   def create
     @activity = current_customer.activities.new(activity_params)
     if @activity.save
-      redirect_to activities_path
+      redirect_to activity_path(@activity)
       flash[:notice] = "活動情報を投稿しました。"
     else
       render :new
@@ -34,10 +34,10 @@ class Public::ActivitiesController < ApplicationController
 
   def update
     if @activity.update(activity_params)
-      redirect_to activity_path
-      flash[:notice] = '活動情報の更新が完了しました。'
+      redirect_to activity_path(@activity)
+      flash[:notice] = "活動情報の更新が完了しました。"
     else
-      render :show
+      render :edit
     end
   end
 

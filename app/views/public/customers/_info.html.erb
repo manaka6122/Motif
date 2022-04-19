@@ -4,17 +4,25 @@
     <th>名前</th>
     <td><%= customer.name %></td>
   </tr>
+  <% if customer == current_customer %>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= customer.email %></td>
+    </tr>
+  <% end %>
   <tr>
     <th>紹介文</th>
     <td><%= customer.profile %></td>
   </tr>
 </table>
 <div class="row">
-  <% if customer == current_customer && customer.name != "guestuser" %>
-    <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
-      <i class="fas fa-user-cog"></i>
+  <% if customer.name != "guestuser" %>
+    <% if customer == current_customer %>
+      <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    <% else %>
+      <%= link_to "Begin Chat", message_path(customer.id), class: "btn btn-primary btn-block" %>
     <% end %>
-  <% else %>
-    <%= link_to "Begin Chat", message_path(customer.id), class: "btn btn-primary btn-block" %>
   <% end %>
 </div>

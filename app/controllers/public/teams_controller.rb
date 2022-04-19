@@ -36,7 +36,7 @@ class Public::TeamsController < ApplicationController
       redirect_to team_path(@team)
       flash[:notice] = "楽団情報の更新が完了しました。"
     else
-      render :show
+      render :edit
     end
   end
 

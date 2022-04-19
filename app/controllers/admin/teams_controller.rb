@@ -13,7 +13,9 @@ class Admin::TeamsController < ApplicationController
   end
 
   def update
+    tag_list = params[:team][:tag_name].split(',')
     if @team.update(team_params)
+       @team.save_tags(tag_list)
       redirect_to admin_team_path(@team)
       flash[:notice] = "楽団情報がの更新が完了しました。"
     else

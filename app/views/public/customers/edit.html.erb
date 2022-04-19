@@ -4,7 +4,7 @@
       <h3 class="font-weight-bold mt-3">会員情報編集</h3>
       <div class="hline"></div>
       <div class="text-danger mt-2">
-        <%= render "layouts/errors", obj: activity %>
+        <%= render "layouts/errors", obj: @customer %>
       </div>
       <%= form_with model: @customer do |f| %>
       <div class="form-group row mt-5">
@@ -17,6 +17,12 @@
         <%= f.label :name, "名前", class: "col-form-label col-sm-4" %>
         <div class="col-sm-8">
           <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <%= f.label :email, "メールアドレス", class: "col-form-label col-sm-4" %>
+        <div class="col-sm-8">
+          <%= f.text_field :email, class: "form-control" %>
         </div>
       </div>
       <div class="form-group row mt-3">

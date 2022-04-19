@@ -14,9 +14,9 @@ class Public::CustomersController < ApplicationController
   def update
     if @customer.update(customer_params)
       redirect_to customer_path(@customer)
-      flash[:notice] = '会員情報の更新が完了しました。'
+      flash[:notice] = "会員情報の更新が完了しました。"
     else
-      render :show
+      render :edit
     end
   end
 
@@ -31,9 +31,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def guest_user
+    @customer = Customer.find(params[:id])
     if @customer.name == "guestuser"
       redirect_to customer_path(current_customer)
-      flash[:notice] = 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
 
