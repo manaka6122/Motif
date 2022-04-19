@@ -15,6 +15,6 @@
       <i class="fas fa-user-cog"></i>
     <% end %>
   <% else %>
-    <%= link_to 'Begin Chat', message_path(customer.id) %>
+    <%= link_to "Begin Chat", message_path(customer.id), class: "btn btn-primary btn-block" %>
   <% end %>
 </div>

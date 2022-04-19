@@ -1,5 +1,6 @@
 class Public::ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :destroy, :edit, :update]
+  before_action :authenticate_customer!, except: [:index, :show]
 
   def new
     @activity = Activity.new

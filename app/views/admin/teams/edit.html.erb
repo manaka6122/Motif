@@ -4,7 +4,7 @@
       <h3 class="font-weight-bold mx-auto my-3">楽団情報編集</h3>
       <div class="hline"></div>
       <div class="text-danger">
-        <%= render 'layouts/errors', obj: @team %>
+        <%= render "layouts/errors", obj: @team %>
       </div>
       <%= form_with model: @team,  url: admin_team_path do |f| %>
         <div class="form-group row mt-5">

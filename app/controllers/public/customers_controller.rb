@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :set_current_customer
   before_action :guest_user, only: [:edit]
+  before_action :authenticate_customer!, except: [:show]
 
   def show
     @teams = @customer.teams.page(params[:page])

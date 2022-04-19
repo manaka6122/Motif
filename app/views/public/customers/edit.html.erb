@@ -3,6 +3,9 @@
     <div class="col-md-8 mx-auto">
       <h3 class="font-weight-bold mt-3">会員情報編集</h3>
       <div class="hline"></div>
+      <div class="text-danger mt-2">
+        <%= render "layouts/errors", obj: activity %>
+      </div>
       <%= form_with model: @customer do |f| %>
       <div class="form-group row mt-5">
         <%= f.label :image, "プロフィール画像", class: "col-form-label col-sm-4" %>

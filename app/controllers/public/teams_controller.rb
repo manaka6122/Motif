@@ -1,5 +1,6 @@
 class Public::TeamsController < ApplicationController
   before_action :set_team, only: [:show, :destroy, :edit, :update]
+  before_action :authenticate_customer!, except: [:index, :show]
 
   def new
     @team = Team.new

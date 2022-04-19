@@ -4,7 +4,7 @@
       <h3 class="font-weight-bold mx-auto my-3">活動情報新編集</h3>
       <div class="hline"></div>
       <div class="text-danger">
-        <%= render 'layouts/errors', obj: @activity %>
+        <%= render "layouts/errors", obj: @activity %>
       </div>
       <%= form_with model: @activity, url: admin_activity_path do |f| %>
         <div class="form-group row mt-5">
