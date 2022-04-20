@@ -1,8 +1,8 @@
 <div class="card-columns d-flex flex-wrap mt-3 mb-3">
   <% activities.each do |activity| %>
-    <div class="card mx-auto", style="width: 15rem; height: 380px">
+    <div class="card mx-auto", style="width: 16rem; height: 380px">
       <%= link_to activity_path(activity) do %>
-        <%= image_tag activity.get_image(200, 200), class: "card-img-top" %>
+        <%= image_tag activity.get_image(200, 180), class: "card-img-top" %>
       <% end %>
       <div class="card-body">
         <div class="row">
@@ -15,7 +15,7 @@
                 <strong><i class="far fa-flag"></i><span> <%= activity.title %></span></strong>
               <% end %>
             </p>
-            <p class="card-text">内容：<%= activity.content%></p>
+            <p class="card-text text-truncate">内容：<%= activity.content%></p>
             <span><i class="fas fa-user"></i> By <%= activity.team.name %> ｜ </span>
             <% if customer_signed_in? %>
               <span id="favorite_buttons_<%= activity.id %>">

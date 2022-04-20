@@ -19,9 +19,9 @@
         <div class="col-md-10 offset-md-1 mt-5">
           <div class="card-deck">
             <% @activities.last(3).each do |activity| %>
-            <div class="card mx-auto", style="max-width: 16rem; height: 300px;">
+            <div class="card mx-auto", style="max-width: 16rem; height: 400px;">
               <%= link_to activity_path(activity) do %>
-                <%= image_tag activity.get_image(250, 200), class: "card-img-top" %>
+                <%= image_tag activity.get_image(250, 170), class: "card-img-top" %>
               <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= activity.title %><h5>

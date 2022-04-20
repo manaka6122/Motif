@@ -31,3 +31,43 @@ end
       {name: "AMC WINDS", address: "愛知県名古屋市", introduction: "幅色い年齢層の、幅広い職業のメンバーが時にはワイワイ、時には真剣に、楽しく音楽に没頭しています。", customer_id: 6}
     ]
   )
+
+  Tag.create!(
+    [
+      {name: "パーカッション"},
+      {name: "木管楽器"},
+      {name: "金管楽器"},
+      {name: "全パート"}
+    ]
+  )
+  TeamTag.create!(
+    [
+      {team_id: 1, tag_id: 1},
+      {team_id: 2, tag_id: 2},
+      {team_id: 3, tag_id: 3},
+      {team_id: 4, tag_id: 3},
+      {team_id: 5, tag_id: 4},
+      {team_id: 6, tag_id: 4}
+    ]
+  )
+  
+  Team.limit(6).zip(Customer.limit(6)) do |team, customer|
+    Activity.create!(
+      [
+        {customer: customer,
+        team: team,
+        title: "第1回ABC定期演奏会",
+        content: "お馴染みの曲からクラッシックまで演奏します。是非気軽にお越しください。",
+        activity_on: "2022/05/15",
+        status: 0,
+        image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-activity1.jpg"), filename:"sample-activity1.jpg")},
+        {customer: customer,
+        team: team,
+        title: "ABCクリスマスコンサート",
+        content: "クリスマスソングを演奏します!",
+        activity_on: "2022/12/20",
+        status: 0,
+        image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-activity2.jpg"), filename:"sample-activity2.jpg")}
+      ]
+    )
+  end

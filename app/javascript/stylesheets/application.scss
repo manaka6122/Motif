@@ -243,6 +243,10 @@ a:hover {
   color: black;
 }
 
+.card-text {
+  font-size: 15px;
+}
+
 .customer-activities {
   .card-columns {
     column-count: 2;
@@ -258,9 +262,6 @@ a:hover {
     column-count: 2;
   }
 }
-
-
-
 
 @media screen and (max-width: 425px) {
   .img-wrap {
