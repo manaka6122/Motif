@@ -7,7 +7,7 @@
         <%= render "public/messages/index", messages: @messages, customer: @customer %>
       </div>
         <%= form_with model: @message, data: {remote: true} do |f| %>
-        <div class="form-row mx-auto mt-3 mb-3">
+        <div class="form-row message-form mx-auto mt-3 mb-3">
         <div class="col-9">
           <%= f.text_field :content, placeholder: "メッセージを入力してください", class: "form-control" %>
           <%= f.hidden_field :room_id %>

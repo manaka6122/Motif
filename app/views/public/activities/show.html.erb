@@ -1,41 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mt-3">
+    <div class="col-md-5 mt-3">
       <%= render "public/customers/info", customer: @activity.customer %>
     </div>
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-7">
       <h3 class="font-weight-bold mt-3">活動情報詳細</h3>
       <div class="hline"></div>
       <div class="row justify-content-center mt-3">
-			  <div class="col-md-6">
-				  <%= image_tag @activity.get_image(200, 300) %>
+			  <div class="col-md-12">
+				  <%= image_tag @activity.get_image(300, 400), class: "d-block mx-auto mb-2" %>
 			  </div>
-			  <div class="col-md-6">
-          <table class="w-100">
+			  <div class="col-md-12">
+          <table class="table">
             <tr class="row">
-              <th class="col-4">楽団名</th>
-              <td class="col-8"><%= link_to @activity.team.name, team_path(@activity.team_id), class: "text-dark" %></td>
+              <th class="col-5">楽団名</th>
+              <td class="col-7"><%= link_to @activity.team.name, team_path(@activity.team_id), class: "text-dark" %></td>
             </tr>
             <tr class="row">
-              <th class="col-4">タイトル</th>
-              <td class="col-8"><%= @activity.title %></td>
+              <th class="col-5">タイトル</th>
+              <td class="col-7"><%= @activity.title %></td>
             </tr>
             <tr class="row">
-              <th class="col-4">内容</th>
-              <td class="col-8"><%= @activity.content %></td>
+              <th class="col-5">内容</th>
+              <td class="col-7"><%= @activity.content %></td>
             </tr>
             <tr class="row">
-              <th class="col-4">開催日</th>
-              <td class="col-8"><%= @activity.activity_on %></td>
+              <th class="col-5">開催日</th>
+              <td class="col-7"><%= @activity.activity_on %></td>
             </tr>
             <tr class="row">
-              <th class="col-4"></th>
+              <th class="col-5"></th>
               <% if customer_signed_in? %>
-              <td id="favorite_buttons_<%= @activity.id %>" class="col-8">
+              <td id="favorite_buttons_<%= @activity.id %>" class="col-7">
                 <%= render "public/favorites/btn", activity: @activity %>
               </td>
               <% else %>
-              <td class="col-8">
+              <td class="col-7">
                 <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
                 <%= @activity.favorites.count %>
               </td>

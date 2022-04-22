@@ -37,10 +37,14 @@ body {
   box-sizing: border-box;
 }
 
+main {
+  min-height: inherit;
+  background-color: #F3E2BD;
+}
 
 header {
   width: 100%;
-  background-color: #666666;
+  background-color: #025259;
   top: 0;
   .navbar {
     font-family: 'Alegreya Sans SC', sans-serif;
@@ -56,13 +60,13 @@ header {
   }
 
   .navbar-brand:hover, .nav-link:hover {
-    color: orange;
+    color: #D94F04;
   }
 }
 
 .navbar-toggler {
   border-color: #fff;
-  background-color: #666666;
+  background-color: #025259;
 }
 
 .navbar-toggler .navbar-toggler-icon {
@@ -70,13 +74,13 @@ header {
 }
 
 .btn-outline-success {
-  color: orange;
-  border-color: orange;
+  color: #D94F04;
+  border-color: #D94F04;
 }
 
 .btn-outline-success:hover {
-  background: orange;
-  border-color: orange;
+  background: #D94F04;
+  border-color: #D94F04;
 }
 
 footer {
@@ -84,7 +88,7 @@ footer {
   padding: 20px 0;
   position: absolute;
   bottom: 0;
-  background-color: #666666;
+  background-color: #025259;
   text-align: center;
   p {
     margin: 0;
@@ -128,11 +132,11 @@ a:hover {
 
   .btn {
     border-radius: 4px;
+    padding: 8px 15px;
   }
 
   .btn-primary {
     color: #333;
-    padding: 15px 25px;
     font-size: 16px;
     border: 3px solid #333;
     background: transparent;
@@ -142,9 +146,15 @@ a:hover {
     width: 200px;
   }
 
-  .btn-primary:hover, .btn-tag:hover:hover, .btn-outline-secondary:hover {
-    background: orange;
-    border: orange;
+  .btn-info {
+    width: 350px;
+    padding: 10px 15px;
+  }
+
+  .btn-primary:hover, .btn-tag:hover, .btn-outline-secondary:hover {
+    background: #D94F04;
+    border: #D94F04;
+    color: #fff;
   }
 
 .btn-sm {
@@ -154,7 +164,7 @@ a:hover {
 
 .btn-tag {
   color: #fff;
-  background: #666666;
+  background: #025259;
   font-size: 14px;
   padding: 6px 12px;
   margin: 4px;
@@ -185,6 +195,22 @@ a:hover {
   }
 }
 
+table {
+  border-spacing: 0;
+}
+
+.table th, .table td, .table thead th {
+  border-bottom: 1px solid #000;
+}
+
+.table th, .table td {
+  border-top: transparent;
+}
+
+.tag_list {
+  border: 1px solid #000;
+}
+
 .pagination {
   justify-content: center;
 }
@@ -206,7 +232,7 @@ a:hover {
 .current-user {
     color: #fff;
     text-align: right;
-    background-color: brown;
+    background-color: #D94F04;
     width: fit-content;
     margin: 10px 0 0 auto;
     border-radius: 30px;
@@ -221,7 +247,7 @@ a:hover {
 .visited-user {
     color: #fff;
     margin: 10px;
-    background-color: brown;
+    background-color: #D94F04;
     text-align: left;
     width: fit-content;
     margin: 10px auto 0 0;
@@ -234,6 +260,9 @@ a:hover {
     padding: 10px;
 }
 
+.message-form {
+  vertical-align: bottom;
+}
 .size {
   font-size: 2rem;
   color: grey;

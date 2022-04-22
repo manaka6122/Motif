@@ -1,5 +1,5 @@
 <table class="table">
-  <tr><%= image_tag customer.get_profile_image(200, 200), class: "rounded-circle mb-2" %></tr>
+  <tr><%= image_tag customer.get_profile_image(200, 200), class: "rounded-circle d-block mx-auto mb-2" %></tr>
   <tr>
     <th>名前</th>
     <td><%= customer.name %></td>
@@ -18,11 +18,11 @@
 <div class="row">
   <% if customer.name != "guestuser" %>
     <% if customer == current_customer %>
-      <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
+      <%= link_to edit_customer_path(customer), class: "btn btn-primary btn-info mx-auto" do %>
         <i class="fas fa-user-cog"></i>
       <% end %>
     <% else %>
-      <%= link_to "Begin Chat", message_path(customer.id), class: "btn btn-primary btn-block" %>
+      <%= link_to "Begin Chat", message_path(customer.id), class: "btn btn-primary btn-info mx-auto" %>
     <% end %>
   <% end %>
 </div>
