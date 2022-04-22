@@ -65,10 +65,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    about_path
+    customer_path(resource)
   end
 
   def after_update_path_for(resource)
-    about_path
+    customer_path(resource)
   end
 end

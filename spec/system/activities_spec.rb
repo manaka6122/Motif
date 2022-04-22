@@ -25,6 +25,9 @@ describe 'activities_controllerのテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/activities/new'
       end
+      it 'imageフォームが表示される' do
+        expect(page).to have_field 'activity[image]'
+      end
       it 'team.nameフォームが表示される' do
         expect(page).to have_field 'activity[team_id]'
       end
@@ -166,6 +169,9 @@ describe 'activities_controllerのテスト' do
         context '表示の確認' do
           it 'URLが正しい' do
             expect(current_path).to eq '/activities/' + activity.id.to_s + '/edit'
+          end
+          it '画像編集フォームが表示される' do
+            expect(page).to have_field 'activity[image]'
           end
           it '編集前のteam.nameがフォームに表示されている' do
             expect(page).to have_select('activity[team_id]', selected: activity.team.name)
