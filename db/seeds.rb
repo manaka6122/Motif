@@ -17,7 +17,7 @@ Admin.create!(
     email: Faker::Internet.email,
     password: "password",
     password_confirmation: "password",
-    profile: "test"
+    profile: "よろしくお願いします。"
   )
 end
 
@@ -50,7 +50,7 @@ end
       {team_id: 6, tag_id: 4}
     ]
   )
-  
+
   Team.limit(6).zip(Customer.limit(6)) do |team, customer|
     Activity.create!(
       [

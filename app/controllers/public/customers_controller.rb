@@ -20,6 +20,12 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  def favorites
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:activity_id)
+    @favorite_activities = Activity.find(favorites)
+    @favorite_activities = Kaminari.paginate_array(@favorite_activities).page(params[:page]).per(6)
+  end
+
   private
 
   def customer_params

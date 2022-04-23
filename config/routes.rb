@@ -23,7 +23,11 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about', as: 'about'
 
   scope module: :public do
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        get :favorites
+      end
+    end
     resources :activities do
       resource :favorites, only: [:create, :destroy]
     end
