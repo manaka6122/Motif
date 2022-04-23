@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'activities_controllerのテスト' do
+describe 'activitiesのテスト' do
   let(:customer) { create(:customer) }
   let!(:other_customer) { create(:customer) }
   let!(:team){ create(:team, customer: customer) }

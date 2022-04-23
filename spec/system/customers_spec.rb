@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'customers_controllerのテスト:ログイン前' do
+describe 'customersのテスト:ログイン前' do
   describe 'ヘッダーのテスト' do
     before do
       visit root_path
@@ -169,7 +169,7 @@ describe 'customers_controllerのテスト:ログイン前' do
   end
 end
 
-describe 'customers_controllerのテスト:ログイン後' do
+describe 'customersのテスト:ログイン後' do
   let(:customer) { create(:customer) }
   let!(:team) { create(:team, customer: customer) }
   let!(:activity) { create(:activity, customer: customer, team: team) }
