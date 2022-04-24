@@ -1,6 +1,6 @@
 class Public::MessagesController < ApplicationController
   before_action :authenticate_customer!
-  
+
 
   def show
     @customer = Customer.find(params[:id])
@@ -25,6 +25,13 @@ class Public::MessagesController < ApplicationController
     @message.save
     @room = Room.find(@message.room.id)
     @messages = @room.messages
+    @message_room = @message.room
+    @message_room.create_notification_dm(current_customer, @message.id)
+    @customer = @room.customer_rooms.where.not(customer: current_customer).first.customer
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end
   end
 
   private

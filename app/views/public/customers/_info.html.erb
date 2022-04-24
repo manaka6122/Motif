@@ -16,14 +16,24 @@
   </tr>
 </table>
 <div class="row">
-  <% if customer.name != "guestuser" %>
-    <% if customer == current_customer %>
-      <%=link_to "お気に入り", favorites_customer_path(customer), class: "btn btn-primary btn-info mx-auto mb-2" %>
-      <%= link_to edit_customer_path(customer), class: "btn btn-primary btn-info mx-auto" do %>
-        <i class="fas fa-user-cog"></i>
-      <% end %>
-    <% else %>
-      <%= link_to "Begin Chat", message_path(customer.id), class: "btn btn-primary btn-info mx-auto" %>
+  <% if customer.name != "guestuser" &&  customer == current_customer %>
+    <%= link_to favorites_customer_path(customer), class: "btn btn-primary btn-info mx-auto" do %>
+    <i class="fas fa-heart"></i>
     <% end %>
+    <%= link_to notifications_path, class: "btn btn-primary btn-bell mx-auto" do %>
+      <% if unchecked_notifications.any? %>
+        <i class="fas fa-bell"></i>
+      <% else %>
+        <span class="fa-stack">
+          <i class="fas fa-bell"></i>
+          <i class="fas fa-circle n-circle fa-stack-1x fa-inverse"></i>
+        </span>
+      <% end %>
+    <% end %>
+    <%= link_to edit_customer_path(customer), class: "btn btn-primary btn-info mx-auto" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  <% else %>
+    <%= link_to "Begin Chat", message_path(customer.id), class: "btn btn-primary btn-info mx-auto" %>
   <% end %>
 </div>

@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe 'customersのテスト:ログイン前' do
+  let(:customer) { create(:customer) }
+  let!(:team) { create(:team, customer: customer) }
+  let!(:activity) { create(:activity, customer: customer, team: team) }
+
   describe 'ヘッダーのテスト' do
     before do
       visit root_path
@@ -167,12 +171,32 @@ describe 'customersのテスト:ログイン前' do
       end
     end
   end
+
+  describe 'ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する' do
+    subject { current_path }
+
+    it '会員編集画面' do
+      visit edit_customer_path(customer)
+      is_expected.to eq '/customers/sign_in'
+    end
+    it 'team投稿編集画面' do
+      visit edit_team_path(team)
+      is_expected.to eq '/customers/sign_in'
+    end
+    it 'activity投稿編集画面' do
+      visit edit_activity_path(activity)
+      is_expected.to eq '/customers/sign_in'
+    end
+  end
 end
 
 describe 'customersのテスト:ログイン後' do
   let(:customer) { create(:customer) }
+  let!(:other_customer) { create(:customer) }
   let!(:team) { create(:team, customer: customer) }
+  let!(:other_team) { create(:team, customer: other_customer) }
   let!(:activity) { create(:activity, customer: customer, team: team) }
+  let!(:other_activity) { create(:activity, customer: other_customer, team: other_team) }
 
   before do
     visit new_customer_session_path
@@ -250,6 +274,37 @@ describe 'customersのテスト:ログイン後' do
         expect(page).to have_link activity.title, href: activity_path(activity)
         expect(page).to have_content activity.content
         expect(page).to have_content activity.team.name
+      end
+    end
+  end
+
+  describe '他人の会員詳細画面のテスト' do
+    before do
+      visit customer_path(other_customer)
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/customers/' + other_customer.id.to_s
+      end
+      it '他人の名前と紹介文が表示される' do
+        expect(page).to have_content other_customer.name
+        expect(page).to have_content other_customer.profile
+      end
+      it '他人のメールアドレスは表示されない' do
+        expect(page).not_to have_content other_customer.email
+      end
+      it '他人の会員情報編集画面へのリンクは存在しない' do
+        expect(page).not_to have_link '', href: edit_customer_path(customer)
+      end
+      it '他人が投稿したTeam一覧が表示される' do
+        expect(page).to have_link other_team.name, href: team_path(other_team)
+        expect(page).to have_content other_team.address
+      end
+      it '自分が投稿したActivity一覧が表示される' do
+        expect(page).to have_link other_activity.title, href: activity_path(other_activity)
+        expect(page).to have_content other_activity.content
+        expect(page).to have_content other_activity.team.name
       end
     end
   end

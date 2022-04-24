@@ -1,3 +1,3 @@
 $('#message').append('<strong class="current_user"><%= @message.content %></strong>');
 $('input[type=text]').val("")
-$('#message').html("<%= j(render "index", messages: @messages) %>");
+$('#message').html("<%= j(render "index", messages: @messages, customer: @customer) %>");

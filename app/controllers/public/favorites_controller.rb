@@ -5,6 +5,11 @@ class Public::FavoritesController < ApplicationController
   def create
     favorite = current_customer.favorites.new(activity_id: @activity.id)
     favorite.save
+    @activity.create_notification_favorite(current_customer)
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end
   end
 
   def destroy

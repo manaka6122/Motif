@@ -1,0 +1,25 @@
+<% visitor = notification.visitor %>
+
+<table class="table table-hover">
+  <tr>
+    <td><%= image_tag visitor.get_profile_image(50, 50), class: "rounded-circle" %></td>
+    <td><%= link_to visitor.name, customer_path(visitor) %>さんが</td>
+    <% case notification.action %>
+    <% when 'favorite' %>
+      <td>
+        <%= link_to "あなたの投稿に", notification.activity %>
+        <i class="fas fa-heart", style="red"></i>いいねしました
+        (<%= time_ago_in_words(notification.created_at).upcase %>)前
+      </td>
+    <% when 'dm' %>
+      <td>
+        あなたに
+        <i class="fas fa-envelope"></i>メッセージを送りました
+        (<%= time_ago_in_words(notification.created_at).upcase %>)前<br>
+        <%= link_to rooms_path do %>
+          <%= truncate(notification.message.content, length: 20, omission: '... (一部表示)') %>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+</table>

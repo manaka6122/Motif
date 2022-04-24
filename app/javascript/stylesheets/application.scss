@@ -147,7 +147,12 @@ a:hover {
   }
 
   .btn-info {
-    width: 350px;
+    width: 120px;
+    padding: 14px 15px 10px 15px;
+  }
+
+  .btn-bell {
+    width: 120px;
     padding: 10px 15px;
   }
 
@@ -281,6 +286,15 @@ table {
     column-count: 2;
   }
 }
+
+.n-circle {
+  position: absolute;
+  padding-left: 0.7rem;
+  padding-top: 0rem;
+  padding-bottom: 0.6rem;
+  color: #D94F04;
+}
+
 
 .card-columns {
   @include media-breakpoint-only(md) {
