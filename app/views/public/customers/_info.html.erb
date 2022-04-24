@@ -22,12 +22,12 @@
     <% end %>
     <%= link_to notifications_path, class: "btn btn-primary btn-bell mx-auto" do %>
       <% if unchecked_notifications.any? %>
+      <span class="fa-stack">
         <i class="fas fa-bell"></i>
+        <i class="fas fa-circle n-circle fa-stack-1x fa-inverse"></i>
+      </span>
       <% else %>
-        <span class="fa-stack">
-          <i class="fas fa-bell"></i>
-          <i class="fas fa-circle n-circle fa-stack-1x fa-inverse"></i>
-        </span>
+        <i class="fas fa-bell"></i>
       <% end %>
     <% end %>
     <%= link_to edit_customer_path(customer), class: "btn btn-primary btn-info mx-auto" do %>
