@@ -16,7 +16,7 @@
         あなたに
         <i class="fas fa-envelope"></i>メッセージを送りました
         (<%= time_ago_in_words(notification.created_at).upcase %>)前<br>
-        <%= link_to rooms_path do %>
+        <%= link_to message_path(visitor) do %>
           <%= truncate(notification.message.content, length: 20, omission: '... (一部表示)') %>
         <% end %>
       </td>
