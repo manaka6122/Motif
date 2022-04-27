@@ -43,7 +43,7 @@
             </tr>
           </table>
         </div>
-        <div class="col-12 mt-5">
+        <div class="col-12 mt-5 mb-3">
           <% if @activity.customer == current_customer %>
             <%= link_to "編集", edit_activity_path(@activity), class: "btn btn-sm btn-primary mr-2" %>
             <%= link_to "削除", activity_path(@activity), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-primary" %>
