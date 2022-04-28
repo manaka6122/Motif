@@ -13,11 +13,19 @@
       <td><%= activity.customer.name %></td>
       <td><%= activity.team.name %></td>
       <td><%= link_to activity.title, admin_activity_path(activity) %></td>
-      <td><%= activity.status_i18n %></td>
+      <% if activity.status_i18n == "公開" %>
+        <td class="text-success font-weight-bold">
+          <%= activity.status_i18n %>
+        </td>
+      <% else %>
+        <td class="text-danger font-weight-bold">
+          <%= activity.status_i18n %>
+        </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
 </table>
-<div class="text-center">
+<div>
   <%= paginate activities %>
 </div>
