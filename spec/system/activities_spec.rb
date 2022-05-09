@@ -73,6 +73,9 @@ describe 'activitiesのテスト' do
         click_button '投稿'
         expect(current_path).to eq '/activities/' + Activity.last.id.to_s
       end
+      it 'サクセスメッセージが表示される' do
+        expect(page).to have_content '投稿しました'
+      end
     end
     describe '投稿一覧画面のテスト' do
       before do
@@ -221,6 +224,9 @@ describe 'activitiesのテスト' do
           end
           it 'リダイレクト先が、更新した投稿の詳細画面になっている' do
             expect(current_path).to eq '/activities/' + activity.id.to_s
+          end
+          it 'サクセスメッセージが表示される' do
+            expect(page).to have_content '更新が完了しました'
           end
         end
       end

@@ -18,48 +18,51 @@ describe 'teamsのテスト' do
     before do
       visit new_team_path
     end
-     context '表示の確認' do
-       it 'URLが正しい' do
-         expect(current_path).to eq '/teams/new'
-       end
-       it 'nameフォームが表示される' do
-         expect(page).to have_field 'team[name]'
-       end
-       it 'nameフォームに値が入っていない' do
-         expect(find_field('team[name]').text).to be_blank
-       end
-       it 'addressフォームが表示される' do
-         expect(page).to have_field 'team[address]'
-       end
-       it 'addressフォームに値が入っていない' do
-         expect(find_field('team[address]').text).to be_blank
-       end
-       it 'introductionフォームが表示される' do
-         expect(page).to have_field 'team[introduction]'
-       end
-       it 'introductionフォームに値が入っていない' do
-         expect(find_field('team[introduction]').text).to be_blank
-       end
-       it '登録ボタンが表示される' do
-         expect(page).to have_button '登録'
-       end
-     end
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/teams/new'
+      end
+      it 'nameフォームが表示される' do
+        expect(page).to have_field 'team[name]'
+      end
+      it 'nameフォームに値が入っていない' do
+        expect(find_field('team[name]').text).to be_blank
+      end
+      it 'addressフォームが表示される' do
+        expect(page).to have_field 'team[address]'
+      end
+      it 'addressフォームに値が入っていない' do
+        expect(find_field('team[address]').text).to be_blank
+      end
+      it 'introductionフォームが表示される' do
+        expect(page).to have_field 'team[introduction]'
+      end
+      it 'introductionフォームに値が入っていない' do
+        expect(find_field('team[introduction]').text).to be_blank
+      end
+      it '登録ボタンが表示される' do
+        expect(page).to have_button '登録'
+      end
+    end
 
-     context '投稿成功のテスト' do
-       before do
-         fill_in 'team[name]', with: Faker::Lorem.characters(number: 10)
-         fill_in 'team[address]', with: Faker::Lorem.characters(number: 10)
-         fill_in 'team[introduction]', with: Faker::Lorem.characters(number: 20)
-       end
+    context '投稿成功のテスト' do
+      before do
+        fill_in 'team[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'team[address]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'team[introduction]', with: Faker::Lorem.characters(number: 20)
+      end
 
-       it '自分の新しい投稿が正しく保存される' do
-         expect { click_button '登録' }.to change(customer.teams, :count).by(1)
-       end
-       it 'リダイレクト先が正しい' do
-         click_button '登録'
-         expect(current_path).to eq '/teams/' + Team.last.id.to_s
-       end
-     end
+      it '自分の新しい投稿が正しく保存される' do
+        expect { click_button '登録' }.to change(customer.teams, :count).by(1)
+      end
+      it 'リダイレクト先が正しい' do
+        click_button '登録'
+        expect(current_path).to eq '/teams/' + Team.last.id.to_s
+      end
+      it 'サクセスメッセージが表示される' do
+        expect(page).to have_content '登録しました'
+      end
+    end
   end
 
   describe '投稿一覧画面のテスト' do
@@ -187,6 +190,9 @@ describe 'teamsのテスト' do
         end
         it 'リダイレクト先が、更新した投稿の詳細画面になっている' do
           expect(current_path).to eq '/teams/' + team.id.to_s
+        end
+        it 'サクセスメッセージが表示される' do
+          expect(page).to have_content '更新が完了しました'
         end
       end
     end

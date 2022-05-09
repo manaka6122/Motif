@@ -118,6 +118,27 @@ describe 'customersのテスト:ログイン前' do
         expect(page).to have_button '新規登録'
       end
     end
+    context '新規登録成功のテスト'do
+      before do
+        fill_in 'customer[name]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'customer[email]', with: Faker::Internet.email
+        fill_in 'customer[profile]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'customer[password]', with: 'password'
+        fill_in 'customer[password_confirmation]', with: 'password'
+      end
+      
+      it '正しく新規登録されている' do
+        expect { click_button '新規登録' }.to change(Customer.all, :count).by(1)
+      end
+      it '新規登録後のリダイレクト先が、新規登録できた会員の詳細画面になっている' do
+        click_button '新規登録'
+        expect(current_path).to eq '/customers/' + Customer.last.id.to_s
+      end
+      it 'サクセスメッセージが表示されている' do
+        click_button '新規登録'
+        expect(page).to have_content '登録が完了しました'
+      end
+    end
   end
 
   describe '会員ログインのテスト' do
@@ -156,6 +177,9 @@ describe 'customersのテスト:ログイン前' do
       it 'ログイン後のリダイレクト先が、ログインした会員の詳細画面になっている' do
         expect(current_path).to eq '/customers/' + customer.id.to_s
       end
+      it 'サクセスメッセージが表示されている' do
+        expect(page).to have_content 'ログインしました'
+      end
     end
 
     context 'ログイン失敗のテスト' do
@@ -169,6 +193,9 @@ describe 'customersのテスト:ログイン前' do
       it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
         expect(current_path).to eq '/customers/sign_in'
       end
+      it 'アラートメッセージが表示される' do
+        expect(page).to have_content '不正です'
+      end
     end
   end
 
@@ -178,14 +205,17 @@ describe 'customersのテスト:ログイン前' do
     it '会員編集画面' do
       visit edit_customer_path(customer)
       is_expected.to eq '/customers/sign_in'
+      expect(page).to have_content 'ログインしてください'
     end
     it 'team投稿編集画面' do
       visit edit_team_path(team)
       is_expected.to eq '/customers/sign_in'
+      expect(page).to have_content 'ログインしてください'
     end
     it 'activity投稿編集画面' do
       visit edit_activity_path(activity)
       is_expected.to eq '/customers/sign_in'
+      expect(page).to have_content 'ログインしてください'
     end
   end
 end
@@ -245,6 +275,9 @@ describe 'customersのテスト:ログイン後' do
       end
       it 'ログアウト後のリダイレクト先が、トップ画面になっている' do
         expect(current_path).to eq '/'
+      end
+      it 'サクセスメッセージが表示される' do
+        expect(page).to have_content 'ログアウトしました'
       end
     end
   end
@@ -357,6 +390,9 @@ describe 'customersのテスト:ログイン後' do
       end
       it 'リダイレクト先が、自分の会員詳細画面になっている' do
         expect(current_path).to eq '/customers/' + customer.id.to_s
+      end
+      it 'サクセスメッセージが表示される' do
+        expect(page).to have_content '更新が完了しました'
       end
     end
   end
