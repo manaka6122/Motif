@@ -64,5 +64,5 @@ ja:
       too_long: "は%{count}文字以下に設定して下さい。"
       invalid: "は有効でありません。"
       confirmation: "が内容とあっていません。"
-      required: "が入力されてません"
-      wrong_length: "を７文字にしてください"
+      required: "が入力されてません。"
+      wrong_length: "を７文字にしてください。"

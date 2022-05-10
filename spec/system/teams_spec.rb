@@ -63,6 +63,28 @@ describe 'teamsのテスト' do
         expect(page).to have_content '登録しました'
       end
     end
+
+    context '投稿失敗のテスト: nameを空にする' do
+      before do
+        @address = Faker::Lorem.characters(number: 10)
+        @introduction = Faker::Lorem.characters(number: 20)
+        fill_in 'team[address]', with: @address
+        fill_in 'team[introduction]', with: @introduction
+      end
+
+      it '投稿が保存されない' do
+        expect { click_button '登録' }.not_to change(Team.all, :count)
+      end
+      it '新規投稿フォームの内容が正しい' do
+        expect(find_field('team[name]').text).to be_blank
+        expect(page).to have_field 'team[address]', with: @address
+        expect(page).to have_field 'team[introduction]', with: @introduction
+      end
+      it 'バリデーションエラーが表示される' do
+        click_button '登録'
+        expect(page).to have_content '楽団名が入力されていません。'
+      end
+    end
   end
 
   describe '投稿一覧画面のテスト' do
@@ -193,6 +215,25 @@ describe 'teamsのテスト' do
         end
         it 'サクセスメッセージが表示される' do
           expect(page).to have_content '更新が完了しました'
+        end
+      end
+      
+      context '編集失敗のテスト: nameを空にする' do
+        before do
+          fill_in 'team[name]', with: ''
+          click_button '更新'
+        end
+        
+        it '投稿が更新されない' do
+          expect(team.reload.name).to eq team.name
+        end
+        it '投稿編集画面を表示しており、フォームの内容が正しい' do
+          expect(find_field('team[name]').text).to be_blank
+          expect(page).to have_field 'team[address]', with: team.address
+          expect(page).to have_field 'team[introduction]', with: team.introduction
+        end
+        it 'バリデーションエラーが表示される' do
+          expect(page).to have_content '楽団名が入力されていません。'
         end
       end
     end

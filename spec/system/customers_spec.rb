@@ -118,6 +118,7 @@ describe 'customersのテスト:ログイン前' do
         expect(page).to have_button '新規登録'
       end
     end
+    
     context '新規登録成功のテスト'do
       before do
         fill_in 'customer[name]', with: Faker::Lorem.characters(number: 5)
@@ -137,6 +138,34 @@ describe 'customersのテスト:ログイン前' do
       it 'サクセスメッセージが表示されている' do
         click_button '新規登録'
         expect(page).to have_content '登録が完了しました'
+      end
+    end
+    
+    context '新規登録失敗のテスト: nameを1文字にする' do
+      before do
+        @name = Faker::Lorem.characters(number: 1)
+        @email = Faker::Internet.email
+        @profile = Faker::Lorem.characters(number: 10)
+        fill_in 'customer[name]', with: @name
+        fill_in 'customer[email]', with: @email
+        fill_in 'customer[profile]', with: @profile
+        fill_in 'customer[password]', with: 'password'
+        fill_in 'customer[password_confirmation]', with: 'password'
+      end
+      
+      it '新規登録されない' do
+        expect { click_button '新規登録' }.not_to change(Customer.all, :count)
+      end
+      it '新規登録画面を表示しており、フォームの内容が正しい' do
+        click_button '新規登録'
+        expect(page).to have_content '新規登録'
+        expect(page).to have_field 'customer[name]', with: @name
+        expect(page).to have_field 'customer[email]', with: @email
+        expect(page).to have_field 'customer[profile]', with: @profile
+      end
+      it 'バリデーションエラーが表示される' do
+        click_button '新規登録'
+        expect(page).to have_content '名前は2文字以上に設定して下さい。'
       end
     end
   end
@@ -393,6 +422,24 @@ describe 'customersのテスト:ログイン後' do
       end
       it 'サクセスメッセージが表示される' do
         expect(page).to have_content '更新が完了しました'
+      end
+    end
+    
+    context '編集失敗のテスト: nameを1文字にする' do
+      before do
+        @name = Faker::Lorem.characters(number: 1)
+        fill_in 'customer[name]', with: @name
+        click_button '保存'
+      end
+      
+      it '更新されない' do
+        expect(customer.reload.name).to eq customer.name
+      end
+      it '会員編集画面を表示しており、フォームの内容が正しい' do
+        expect(page).to have_field 'customer[name]', with: @name
+      end
+      it 'バリデーションエラーが表示される' do
+        expect(page).to have_content '名前は2文字以上に設定して下さい。'
       end
     end
   end
