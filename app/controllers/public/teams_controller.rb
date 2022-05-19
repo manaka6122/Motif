@@ -1,6 +1,7 @@
 class Public::TeamsController < ApplicationController
   before_action :set_team, only: [:show, :destroy, :edit, :update]
   before_action :authenticate_customer!, except: [:index, :show]
+  before_action :ensure_customer, only: [:edit, :update, :destroy]
 
   def new
     @team = Team.new
@@ -53,5 +54,11 @@ class Public::TeamsController < ApplicationController
 
   def set_team
     @team = Team.find(params[:id])
+  end
+  
+  def ensure_customer
+    @teams = current_customer.teams
+    @team = @teams.find_by(id: params[:id])
+    redirect_to new_activity_path unless @team
   end
 end

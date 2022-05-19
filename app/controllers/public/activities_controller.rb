@@ -1,6 +1,8 @@
 class Public::ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :destroy, :edit, :update]
   before_action :authenticate_customer!, except: [:index, :show]
+  before_action :ensure_customer, only: [:edit, :update, :destroy]
+
 
   def new
     @activity = Activity.new
@@ -49,5 +51,11 @@ class Public::ActivitiesController < ApplicationController
 
   def set_activity
      @activity = Activity.find(params[:id])
+  end
+  
+  def ensure_customer
+    @activities = current_customer.activities
+    @activity = @activities.find_by(id: params[:id])
+    redirect_to new_activity_path unless @activity
   end
 end
