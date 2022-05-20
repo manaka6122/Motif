@@ -28,6 +28,7 @@ class Public::TeamsController < ApplicationController
   end
 
   def edit
+    @tag_list = @team.tags.pluck(:name).join(',')
   end
 
   def update
@@ -55,7 +56,7 @@ class Public::TeamsController < ApplicationController
   def set_team
     @team = Team.find(params[:id])
   end
-  
+
   def ensure_customer
     @teams = current_customer.teams
     @team = @teams.find_by(id: params[:id])
