@@ -9,9 +9,9 @@ class Team < ApplicationRecord
   validates :introduction, presence:true, length:{maximum:200}
 
   def save_tags(sent_tags)
-     # 現在のユーザーの持っているtagを引っ張ってきている
+     # 現在のcustomerの持っているtagを引っ張ってきている
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    # 今bookが持っているタグと今回保存されたものの差をすでにあるタグとする。古いタグは消す。
+    # 今teamが持っているタグと今回保存されたものの差をすでにあるタグとする。古いタグは消す。
     old_tags = current_tags - sent_tags
     # 今回保存されたものと現在の差を新しいタグとする。新しいタグは保存
     new_tags = sent_tags - current_tags
